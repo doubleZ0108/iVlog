@@ -1,0 +1,684 @@
+﻿
+@{
+    ViewBag.Title = "Attention";
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>个人界面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="~/css/user/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/user/font-awesome.4.6.0.css" rel="stylesheet" />
+    <!-- 引入 Bootstrap -->
+    @*<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">*@
+    @*<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">*@
+    <link href="~/css/user/he.css" rel="stylesheet">
+    <link href="~/css/user/settings.css" rel="stylesheet">
+    <script src="../../js/cookie/cookie.js"></script>
+    <script src="../../js/cookie/model.js"></script>
+
+    <script>
+        var user_id;
+        window.onload = function () {
+
+            window.model.CookieToModel();
+            user_id = window.model.data.userID;
+            console.log(user_id);
+            console.log("on load....");
+            var queryJson = [];
+            var row = {};
+            row.user_id = user_id;
+            queryJson.push(row);
+
+            $.ajax({
+                url: "/User/Attention",
+                async: false,
+                type: 'post',
+                contentType: "application/json",
+                data: JSON.stringify(queryJson[0]),
+                dataType: "json",
+                traditional: true,
+                success: function (data) {
+                    var data = eval("(" + data + ")");
+                    console.log(data);
+                    var user_data = data.user_info;
+                    var Followed_user_data = data.Followed_user_info;
+                    //TODO
+                    document.getElementById("profile").setAttribute('src', user_data.avator);
+                    document.getElementById("profile-copy").setAttribute('src', user_data.avator);
+
+                    $$('#name').innerHTML = data.user_info.nick_name;
+                    $$('#unique-sign').innerHTML = data.user_info.signature;
+                    $$('#connect-info').firstElementChild.innerHTML = '关注数 ' + data.user_info.follow_num;
+                    $$('#connect-info').firstElementChild.nextElementSibling.innerHTML = '粉丝数 ' + data.user_info.fans_num;
+
+
+                    //图片留着后端接
+                    // $$('#profile','img').setAttribute('src',data.user_info.avatar);
+
+                    //$$('#profile-copy','img').setAttribute('src',data.user_info.avatar);
+
+
+                    //contact me
+                    $('#wechat').click(function () {
+                        if ($$('#display').innerHTML != '')
+                            $$('#display').innerHTML = '';
+                        else $$('#display').innerHTML = data.user_info.wechat;
+
+                    })
+                    $('#qq').click(function () {
+                        if ($$('#display').innerHTML != '')
+                            $$('#display').innerHTML = '';
+                        else $$('#display').innerHTML = data.user_info.qq;
+
+                    })
+                    $('#envelope').click(function () {
+                        if ($$('#display').innerHTML != '')
+                            $$('#display').innerHTML = '';
+                        else $$('#display').innerHTML = data.user_info.email;
+
+                    })
+                    $('#phone').click(function () {
+                        if ($$('#display').innerHTML != '')
+                            $$('#display').innerHTML = '';
+                        else $$('#display').innerHTML = data.user_info.tel;
+
+                    })
+
+                    Followed_user_data.forEach(function (item, index) {
+                        var newFollower = document.createElement('div');
+                        $$('#FollowList').insertBefore(newFollower, $$('#FollowList').firstChild);
+                        $$('#FollowList').firstChild.innerHTML = ['   <div class="box idcard">\n' +
+                            '                <div class="row">\n' +
+                            '\n' +
+                            '                <div class="col-lg-2">\n' +
+                            '\n' +
+                            '                    <div class="hoverEffect2">\n' +
+                            '                        <img  class="img-circle img-responsive center-block profile" src="' + item.img + '" alt="头像"/>\n' +
+                            '                        <div class="divright"></div>\n' +
+                            '                    </div>\n' +
+                            '\n' +
+                            '                </div>\n' +
+                            '                    <div class="col-lg-6">\n' +
+                            '                        <h4 class="idcard-name">' + item.name + '</h4>\n' +
+                            '                        <button class="idcard-follow following">取关</button>\n' +
+                            '                        <p class="idcard-sign">' + item.signature + '</p>\n' +
+                            '\n' +
+                            '                    </div>\n' +
+                            '            </div>\n' +
+                            '                </div>'
+                        ];
+
+                        $$('#FollowList').firstElementChild.querySelector('button').addEventListener('click', function (ev) {
+                            var obj = ev.srcElement ? ev.srcElement : ev.target;
+                            console.log(obj.parentElement.parentElement.parentElement);
+                            (obj.parentElement.parentElement.parentElement).remove();
+                        })
+                        if (item.message_count === 0) {
+                            $$('#FollowList').firstElementChild.querySelector('.divright').remove();
+                        }
+
+                    })
+                },
+                error: function (message) {
+                    alert("请求查询数据失败！");
+                }
+            });
+        }
+    </script>
+
+</head>
+<body background="~/img/user/page-bg.png">
+    <div style="background-image:url(../../img/user/header-touming.png);background-repeat:no-repeat; background-size:cover;width:100%;height:65px;position:fixed;top:0;color:snow;display:inline-block;z-index:3;">
+        <a href="../Main/Index" style="position:relative; top: 10px; left: 15px;"><img src="../../img/user/logo-white.png"></a>
+        <div class="header-upload" style="transition:all .4s;width:80px;height:67px;float:right;position:relative;top:0;margin-right:30px;display:block;border-bottom:solid 2px snow;">
+        <a href="../Main/Upload"  style="font-size:20px; text-align: center; position:relative;top:17px;left:20px;color:snow;">投稿</a>
+        </div>
+    </div>
+
+
+    <div id="bg-color-changer"></div>
+    <!--<div><a id="goBack">首页</a> </div>-->
+    <div class="container guide" id="nav">
+        <div class="col-lg-2 center-block text-center" id="safari">
+            <div>
+                <a>
+                    <img title="双击修改信息" id="profile" class="img-circle img-responsive center-block" src="~/img/user/profile.jpeg" alt="头像" />
+                </a>
+                <div id="gender" class="male"></div>
+            </div>
+            <div class="visible-change">
+                <h1><a title="双击修改个人信息" id="name" href="../User/Setting">姓名</a></h1>
+
+                <div id="connect-info">
+                    <p> 关注数 <span>13</span> </p>
+                    <p>粉丝数 <span>13</span></p>
+                </div>
+                <div>
+                    <ul type="none">
+                        <li id="myLife"><a id="myLifeA" href="../User/Index">我的动态</a></li>
+                        <li id="history"><a href="../User/History">浏览历史</a></li>
+                        <li id="favorite"><a href="../User/Favorite">收藏夹</a></li>
+                        <li class="highShow" id="attention"><a>我的关注</a></li>
+                        <li id="message"><a href="../User/Message">消息</a></li>
+                    </ul>
+                    <a id="hide" style="text-decoration: none">◢◣</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2  center-block text-center" id="safari-copy">
+        <img id="profile-copy" class="img-circle img-responsive center-block" src="~/img/user/profile.jpeg" alt="头像" />
+
+
+    </div>
+    <div class="col-lg-3 center-block text-center" id="selfSignature">
+        <p id="unique-sign">人生不过是一个行走的影子，一个在舞台上指手划脚的拙劣的伶人，登场片刻，就在无声无息中悄然退下；它是一个愚人所讲的故事，充满着喧哗和骚动，却找不到一点意义。</p>
+        <div id="contact">
+            <div class="hovereffect4">
+                <img class="img-responsive" src="~/img/user/for.jpg" alt="">
+                <div class="overlay">
+                    <h2>Contact Me</h2>
+                    <div class="rotate">
+                        <p class="group1">
+                            <a id="qq">
+                                <i class="fa fa-bell"></i>
+                            </a>
+                            <a id="phone">
+                                <i class="fa fa-phone"></i>
+                            </a>
+                        </p>
+                        <hr>
+                        <hr>
+                        <p class="group2">
+                            <a id="envelope">
+                                <i class="fa fa-envelope"></i>
+                            </a>
+                            <a id="wechat">
+                                <i class="fa fa-comments-o"></i>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <p id="display">
+            </p>
+        </div>
+
+    </div>
+    <div id="main">
+
+        <div class="container" id="info-collection">
+            <div class="col-lg-9 col-lg-offset-3" id="bg-color-2">
+                <section class="section post" id="section2">
+                    <div class="section-heading">
+                        <h2 class="text-center center-block">我的动态</h2>
+                        <div class="line-dec"></div>
+                        <span></span>
+                    </div>
+                    <div id="lifeList">
+                        <div class="box">
+                            <div class="delete">
+                                <button>x</button>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="side">
+                                        <div class="day"><p>16</p></div>
+                                        <div>
+                                            <div>
+                                                <div class="month"><p>05</p></div>
+                                                <div class="year"><p>2019</p></div>
+                                                <div class="time"><p>23:23:23</p></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="content">
+                                        <div class="description"><p dir="ltr">尼玛的，为什么🐶</p></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="hovereffect">
+                                        <img class="img-responsive" src="~/img/user/history.jpg" alt="">
+                                        <div class="overlay">
+                                            <h2>题目</h2>
+                                            <a class="info" href="#">►</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tag-link">
+                                <div class="tag">
+                                    <ul>
+                                        <li><a href="#">#balabala</a></li>
+                                        <li><a href="#">#gouzi</a></li>
+                                    </ul>
+                                </div>
+                                <div class="link">
+                                    <a href="#">热度(1444)</a>
+                                    <a href="#">点赞(666)</a>
+                                    <a href="#">转发(1234)</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </section>
+
+                <section class="section history" id="section3">
+                    <div class="section-heading">
+                        <h2 class="text-center center-block">浏览历史</h2>
+                        <div class="line-dec"></div>
+                        <span></span>
+                    </div>
+
+
+                    <div id="HistoryList" class="container">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="hovereffect">
+                                    <img class="img-responsive" src="~/img/user/history.jpg" alt="">
+                                    <div class="overlay">
+                                        <h2>3分钟前</h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="hovereffect">
+                                    <img src="~/img/user/history.jpg" style="height: 317px; width: 360px" class="historyItem">
+                                    <div class="overlay">
+                                        <h2>15分钟前</h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <div class="hovereffect">
+                                    <img src="~/img/user/history.jpg" style="height: 317px; width: 360px" class="historyItem">
+                                    <div class="overlay">
+                                        <h2>15分钟前</h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <div class="hovereffect">
+                                    <img class="img-responsive" src="~/img/user/history.jpg" alt="">
+                                    <div class="overlay">
+                                        <h2>3分钟前</h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <section class="section favorite" id="section4">
+                    <div class="section-heading">
+                        <h2 class="text-center center-block">收藏夹</h2>
+                        <div class="line-dec"></div>
+                        <span></span>
+                    </div>
+                    <div id="FavoriteList" class="container">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <div class="hovereffect">
+                                    <img class="img-responsive" src="~/img/user/history.jpg" alt="">
+                                    <div class="overlay">
+                                        <h2></h2>
+                                        <a class="info" href="#">►</a>
+                                        <br />
+                                        <button type="submit" class="dFF" href="#">从收藏夹中删除</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="hovereffect">
+                                    <img src="~/img/user/history.jpg" style="height: 317px; width: 360px" class="historyItem">
+                                    <div class="overlay">
+                                        <h2></h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 ">
+                                <div class="hovereffect">
+                                    <img src="~/img/user/history.jpg" style="height: 317px; width: 360px" class="historyItem">
+                                    <div class="overlay">
+                                        <h2>15分钟前</h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+
+                                <div class="hovereffect">
+                                    <img class="img-responsive" src="~/img/user/history.jpg" alt="">
+                                    <div class="overlay">
+                                        <h2></h2>
+                                        <a class="info" href="#">►</a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </section>
+
+
+                <section class="section attention" id="section5">
+                    <div class="section-heading">
+                        <h2 class="text-center center-block">我的关注</h2>
+                        <div class="line-dec"></div>
+                        <span></span>
+                    </div>
+                    <div class="container">
+                        <div id="FollowList" class="col-lg-9">
+
+                        </div>
+                    </div>
+                </section>
+
+
+
+                <section class="section message" id="section6">
+                    <div class="section-heading">
+                        <h2 class="text-center center-block">消息</h2>
+                        <div class="line-dec"></div>
+                        <span></span>
+                    </div>
+                    <div class="jq22-container">
+                        <div class="demo" style="padding: 1em 0;">
+                            <div class="container">
+                                <div class="row">
+                                    <div class=" col-md-8">
+                                        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingOne">
+                                                    <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne"> 评论 </a> </h4>
+                                                </div>
+                                                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                                                    <div class="panel-body">
+                                                        <ul>
+                                                            <li>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingTwo">
+                                                    <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo"> 关注 </a> </h4>
+                                                </div>
+                                                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                                    <div class="panel-body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingThree">
+                                                    <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree"> 点赞 </a> </h4>
+                                                </div>
+                                                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                                    <div class="panel-body">
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading" role="tab" id="headingFour">
+                                                    <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour"> 举报 </a> </h4>
+                                                </div>
+                                                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                                    <div class="panel-body">
+                                                        <ul>
+                                                            <li>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </section>
+
+                <section class="section change" id="section7">
+                    <div class="section-heading">
+                        <h2 class="text-center center-block">设置</h2>
+                        <div class="line-dec"></div>
+                        <span></span>
+                    </div>
+                    <div class="container">
+                        <div class="padding-dom"></div>
+                        <form class="el-form clearfix" mode="[object Object]">
+                            <div class="el-form-item user-nick-rel-name">
+                                <label class="el-form-item__label">头像:</label>
+                                <!--<div class="el-form-item__content">
+                                    <span class="userinfo-username">安若于此</span><!->
+                                </div>-->
+                                <div class="modal-content clearfix">
+                                    <div class="img-clip-wrap">
+                                        <div class="container-bg">
+                                            <div class="img-container">
+                                                <img id="clip_src_img">
+                                                <div class="shadow-box">
+                                                </div>
+                                                <div class="crop-wrap">
+                                                    <div class="shadow-box" style="width: 0px; height: 0px; left: 0px; top: 0px;">
+                                                        <img class="shadow-img" style="width: 0px; height: 0px; top: 0px; left: 0px;">
+                                                    </div>
+                                                    <!--<div class="crop-box" style="width: 0px; height: 0px; left: 0px; top: 0px;">
+                                                        <span class="drag-point point-lt"></span>
+                                                        <span class="drag-point point-lb"></span>
+                                                        <span class="drag-point point-rt"></span>
+                                                        <span class="drag-point point-rb"></span>
+                                                    </div>-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <label for="file_input" class="first-change-lb">
+                                            <i></i>
+                                            <span>选择图片</span>
+                                        </label>
+                                        <div class="reset-img" style="display: none;">
+                                            <label for="file_input">
+                                                <i></i>&nbsp;重新选择
+                                            </label>
+                                        </div>
+                                        <input type="file" id="file_input" accept="image/png,image/jpg,image/jpeg">
+                                    </div>
+                                    <div class="border-line"></div>
+                                    <div class="img-preview-wrap">
+                                        <div class="pre-container" style="background-image: url(&quot;https://i2.hdslb.com/bfs/face/cb07adc2d2edede6689f1dfabe75bfa78f7f949d.jpg@150w_150h.jpg&quot;);">
+                                            <img id="clip_res_img" style="display: none;">
+                                        </div>
+                                        <div class="pre-info">当前头像</div>
+                                    </div>
+                                </div>
+                                <p class="descript">请选择图片上传：大小180 * 180像素支持JPG、PNG等格式，图片需小于2M</p>
+                            </div>
+                            <div class="el-form-item user-nick-rel-name">
+                                <label class="el-form-item__label">用户名:</label>
+                                <div class="el-form-item__content">
+                                    <span class="userinfo-username">安若于此</span><!---->
+                                </div>
+                            </div>
+                            <div class="el-form-item user-my-sign">
+                                <label class="el-form-item__label">我的签名:</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-textarea">
+                                        <textarea placeholder="设置您的签名orz" type="textarea" rows="2" autocomplete="off" validateevent="true" class="el-textarea__inner"></textarea>
+                                    </div><!---->
+                                </div>
+                            </div>
+                            <div class="el-form-item user-my-sex">
+                                <label class="el-form-item__label">性别:</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-radio-group">
+                                        <label class="el-radio-button is-active">
+                                            <input type="radio" class="el-radio-button__orig-radio" value="男" name="1">
+                                            <span class="el-radio-button__inner">男</span>
+                                        </label>
+                                        <label class="el-radio-button">
+                                            <input type="radio" class="el-radio-button__orig-radio" value="女" name="1">
+                                            <span class="el-radio-button__inner">女</span>
+                                        </label>
+                                        <label class="el-radio-button">
+                                            <input type="radio" class="el-radio-button__orig-radio" value="保密" name="1">
+                                            <span class="el-radio-button__inner">保密</span>
+                                        </label>
+                                    </div><!---->
+                                </div>
+                            </div>
+                            <div class="el-form-item user-my-date">
+                                <label class="el-form-item__label">出生日期:</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-input">
+                                        <!----><!---->
+                                        <input autocomplete="off" placeholder="你的生日" type="text" maxlength="10" validateevent="true" class="el-input__inner">
+                                        <!----><!---->
+                                    </div>
+                                    <span class="date-not">注：输入格式为"年-月-日"</span><!---->
+                                </div>
+
+                            </div>
+                            <div class="el-form-item user-my-qq">
+                                <label class="el-form-item__label">我的QQ:</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-input">
+                                        <!----><!---->
+                                        <input autocomplete="off" placeholder="你的QQ" type="text" maxlength="13" validateevent="true" class="el-input__inner">
+                                        <!----><!---->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el-form-item user-my-wechat">
+                                <label class="el-form-item__label">我的微信:</label>
+                                <div class="el-form-item__content">
+                                    <div class="el-input">
+                                        <!----><!---->
+                                        <input autocomplete="off" placeholder="你的微信" type="text" maxlength="16" validateevent="true" class="el-input__inner">
+                                        <!----><!---->
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="el-form-item user-my-homeland">
+                                <label class="el-form-item__label">所在地:</label>
+                                <!--<div class="el-form-item__content">
+                                    <div class="el-input"><!-><!->
+                                        <input autocomplete="off" placeholder="你的微信" type="text" maxlength="16" validateevent="true" class="el-input__inner">
+                                        <!-><!->
+                                    </div>
+                                </div>-->
+                                <div id="position">
+                                    <fieldset>
+                                        <form action="#">
+                                            <div class="el-input">
+                                                <!----><!---->
+                                                <input id="addr-show" value="所在地" type="text" validateevent="true" class="el-input__inner">
+                                                <!----><!---->
+                                            </div>
+                                            <!--<input type="text" value="" id="addr-show">-->
+                                            <br>
+                                            <!--省份选择-->
+                                            <select id="prov" onchange="showCity(this)">
+                                                <option>=请选择省份=</option>
+                                            </select>
+                                            <!--城市选择-->
+                                            <select id="city" onchange="selectCountry(this)">
+                                                <option>=请选择城市=</option>
+                                            </select>
+                                            <!--县区选择->
+                                            <select id="country" onchange="selecCountry(this)">
+                                                <option>=请选择县区=</option>
+                                            </select>-->
+                                            <button type="button" class="btn met1" onClick="showAddr()" id="button-show">确定</button>
+                                        </form>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div class="el-form-item user-my-btn">
+                                <!---->
+                                <div class="el-form-item__content">
+                                    <div class="padding-dom"></div>
+                                    <div class="user-my-btn-warp">
+                                        <button type="button" class="el-button el-button--primary">
+                                            <!----><!---->
+                                            <span>保存</span>
+                                        </button>
+                                    </div><!---->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </section>
+
+
+
+
+            </div>
+        </div>
+        <footer class="page-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 col-sm-12 user-info">
+                        <h6 class="text-uppercase font-weight-bold">用户名</h6>
+                        <h6>个性签名</h6>
+                    </div>
+                </div>
+                <div class="footer-copyright text-center">© 2019 Copyright: MyWebsite.com</div>
+            </div>
+        </footer>
+    </div>
+</body>
+
+
+
+<!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
+<script src="~/js/jquery.js"></script>
+@*<script src="https://code.jquery.com/jquery.js"></script>*@
+<!-- 包括所有已编译的插件 -->
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/user/visible-change.js"></script>
+<script src="~/js/user/position.js"></script>
+<script src="~/js/user/choosePosition.js"></script>
+<script src="~/js/user/domain.js"></script>
+<!--<script src="~/js/user/attention.js"></script>-->
+<!--<script src="js/user/willN.js"></script>-->
+</html>

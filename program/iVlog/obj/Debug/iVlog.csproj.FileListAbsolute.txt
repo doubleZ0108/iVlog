@@ -1,0 +1,182 @@
+F:\coding in VS\iVlog\iVlog\bin\iVlog.dll.config
+F:\coding in VS\iVlog\iVlog\bin\iVlog.dll
+F:\coding in VS\iVlog\iVlog\bin\iVlog.pdb
+F:\coding in VS\iVlog\iVlog\bin\roslyn\csc.exe
+F:\coding in VS\iVlog\iVlog\bin\roslyn\csc.exe.config
+F:\coding in VS\iVlog\iVlog\bin\roslyn\csc.rsp
+F:\coding in VS\iVlog\iVlog\bin\roslyn\csi.exe
+F:\coding in VS\iVlog\iVlog\bin\roslyn\csi.exe.config
+F:\coding in VS\iVlog\iVlog\bin\roslyn\csi.rsp
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.Managed.Core.targets
+F:\coding in VS\iVlog\iVlog\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.AppContext.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Collections.Immutable.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Console.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.IO.Compression.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.IO.FileSystem.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.IO.Pipes.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Reflection.Metadata.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.AccessControl.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.Claims.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Security.Principal.Windows.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.ValueTuple.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Xml.XmlDocument.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Xml.XPath.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\coding in VS\iVlog\iVlog\bin\roslyn\vbc.exe
+F:\coding in VS\iVlog\iVlog\bin\roslyn\vbc.exe.config
+F:\coding in VS\iVlog\iVlog\bin\roslyn\vbc.rsp
+F:\coding in VS\iVlog\iVlog\bin\roslyn\VBCSCompiler.exe
+F:\coding in VS\iVlog\iVlog\bin\roslyn\VBCSCompiler.exe.config
+F:\coding in VS\iVlog\iVlog\bin\Antlr3.Runtime.dll
+F:\coding in VS\iVlog\iVlog\bin\EntityFramework.dll
+F:\coding in VS\iVlog\iVlog\bin\EntityFramework.SqlServer.dll
+F:\coding in VS\iVlog\iVlog\bin\LitJson.dll
+F:\coding in VS\iVlog\iVlog\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\coding in VS\iVlog\iVlog\bin\Microsoft.Web.Infrastructure.dll
+F:\coding in VS\iVlog\iVlog\bin\Newtonsoft.Json.dll
+F:\coding in VS\iVlog\iVlog\bin\Oracle.ManagedDataAccess.dll
+F:\coding in VS\iVlog\iVlog\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Helpers.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Mvc.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Optimization.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Razor.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.WebPages.Deployment.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.WebPages.dll
+F:\coding in VS\iVlog\iVlog\bin\System.Web.WebPages.Razor.dll
+F:\coding in VS\iVlog\iVlog\bin\WebGrease.dll
+F:\coding in VS\iVlog\iVlog\bin\EntityFramework.xml
+F:\coding in VS\iVlog\iVlog\bin\EntityFramework.SqlServer.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Helpers.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Mvc.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Optimization.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.Razor.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.WebPages.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.WebPages.Deployment.xml
+F:\coding in VS\iVlog\iVlog\bin\System.Web.WebPages.Razor.xml
+F:\coding in VS\iVlog\iVlog\bin\Newtonsoft.Json.xml
+F:\coding in VS\iVlog\iVlog\bin\Antlr3.Runtime.pdb
+F:\coding in VS\iVlog\iVlog\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\EntityFramework.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.Helpers.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.Mvc.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.Optimization.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.Razor.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.WebPages.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+F:\coding in VS\iVlog\iVlog\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+F:\coding in VS\iVlog\iVlog\obj\Debug\iVlog.csproj.CoreCompileInputs.cache
+F:\coding in VS\iVlog\iVlog\obj\Debug\iVlog.csproj.CopyComplete
+F:\coding in VS\iVlog\iVlog\obj\Debug\iVlog.dll
+F:\coding in VS\iVlog\iVlog\obj\Debug\iVlog.pdb
+F:\coding in VS\iVlog\iVlog\obj\Debug\iVlog.csprojAssemblyReference.cache
+C:\Users\16214\Desktop\iVlog\iVlog\bin\iVlog.dll.config
+C:\Users\16214\Desktop\iVlog\iVlog\bin\iVlog.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\iVlog.pdb
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\csc.exe
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\csc.exe.config
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\csc.rsp
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\csi.exe
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\csi.exe.config
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\csi.rsp
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.AppContext.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Console.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.IO.Compression.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.IO.Pipes.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.Claims.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.ValueTuple.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Xml.XPath.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\vbc.exe
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\vbc.exe.config
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\vbc.rsp
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\VBCSCompiler.exe
+C:\Users\16214\Desktop\iVlog\iVlog\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Antlr3.Runtime.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\EntityFramework.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\EntityFramework.SqlServer.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\LitJson.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Newtonsoft.Json.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Oracle.ManagedDataAccess.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Oracle.ManagedDataAccess.EntityFramework.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Helpers.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Mvc.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Optimization.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Razor.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.WebPages.Deployment.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.WebPages.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.WebPages.Razor.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\WebGrease.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\EntityFramework.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\EntityFramework.SqlServer.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Helpers.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Mvc.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Optimization.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.Razor.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.WebPages.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.WebPages.Deployment.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\System.Web.WebPages.Razor.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Newtonsoft.Json.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Antlr3.Runtime.pdb
+C:\Users\16214\Desktop\iVlog\iVlog\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.Helpers.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.Mvc.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.Optimization.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.Razor.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.WebPages.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
+C:\Users\16214\Desktop\iVlog\iVlog\obj\Debug\iVlog.csproj.CoreCompileInputs.cache
+C:\Users\16214\Desktop\iVlog\iVlog\obj\Debug\iVlog.csproj.CopyComplete
+C:\Users\16214\Desktop\iVlog\iVlog\obj\Debug\iVlog.dll
+C:\Users\16214\Desktop\iVlog\iVlog\obj\Debug\iVlog.pdb
+C:\Users\16214\Desktop\iVlog\iVlog\obj\Debug\iVlog.csprojAssemblyReference.cache

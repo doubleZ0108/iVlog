@@ -1,0 +1,141 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iVlog-短视频微博平台</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="~/css/login_register/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="~/css/login_register/demo.css" />
+    <link rel="stylesheet" href="~/css/login_register/templatemo-style.css">
+
+    <script type="text/javascript" src="~/js/login_register/modernizr.custom.86080.js"></script>
+
+</head>
+
+<body>
+
+    <div id="particles-js"></div>
+
+    <ul class="cb-slideshow">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+
+    <div class="container-fluid" align="center">
+        <br /><br /><br />
+        <div class="big-div">
+            <div class="tm-content col-xl-4 col-sm-4 col-xs-4 " align="center">
+                <div class="overlapping">
+                    <p style="align:center;font-size:50px; ">iVlog-注册</p>
+                    <br />
+                    <div>
+
+                        <div class="col-md-10 col-sm-10 col-xs-10">
+
+                            <input type="text" class="form-control" id="name" placeholder="请输入4-20位用户名" required />
+                            <br />
+                            <div>
+                                <input type="password" class="form-control" id="psw" placeholder="请输入6-20位密码" required />
+
+                                <label for="" position="relative" float="left" left="0px" top="0px" z-index="4" font-size="12px" color="white">密码强度：</label><span>弱</span><span>中</span><span>强</span>
+                                <input position="relative" float="left" left="0px" top="0px" z-index="2" type="password" class="form-control" id="check_psw" placeholder="请确认密码" required />
+                            </div>
+
+                            <br /><br />
+                                  <div align="middle">
+                                      <button type="button" align="center" class="tm-btn-subscribe" onclick="ReturnClick();" />&emsp;返回&emsp;</button>
+                                      &nbsp;&nbsp;
+                                      <button type="submit" align="center" class="tm-btn-subscribe" onclick="SubmitClick();" />&emsp;提交&emsp;</button>
+                                  </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--					<div class="tm-social-icons-container text-xs-center">-->
+                <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>-->
+                <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>-->
+                <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>-->
+                <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>-->
+                <!--	                </div>-->
+
+            </div>
+
+        </div>
+
+        <div class="footer-link">
+            <p>同济大学-软件学院</p>
+        </div>
+    </div>
+    <script>
+        function ReturnClick() {
+            window.location.replace("../Account/login");
+        }
+        function SubmitClick() {
+            let FLAG = "0";
+            let psw = $("#check_psw").val();
+            let name = $("#name").val();
+            var queryJson = [];
+            var row = {};
+            row.password = psw;
+            row.name = name;
+            queryJson.push(row);
+            console.log(queryJson[0]);
+
+            $.ajax({
+                url: "/Account/Register",
+                async: false,
+                type: 'post',
+                contentType: "application/json",
+                data: JSON.stringify(queryJson[0]),
+                dataType: "json",
+                traditional: true,
+                success: function (data) {
+                    console.log(data);
+                    var data = eval("(" + data + ")");
+                    FLAG = data.RegisterFlag;
+                    console.log(FLAG);
+                    //data.RegisterFlag
+                    //0->失败
+                    //1->成功
+                    
+                    
+                },
+                error: function (message) {
+                    alert("请求查询数据失败！");
+                }
+            });
+            if (FLAG=="0") { alert("用户名" + name + "已存在!"); }
+            else {
+                alert("注册成功!");
+                localStorage.setItem('reg_name', name);
+                //alert("store name");
+                localStorage.setItem('reg_psw', psw);
+                //alert("store psw");
+                window.location.replace("../Account/login"); 
+               // alert("replace");
+
+            }
+        }
+    </script>
+</body>
+
+<script type="text/javascript" src="~/js/login_register/animation_particles.js"></script>
+<script type="text/javascript" src="~/js/login_register/register.js"></script>
+<script src="~/js/jquery.js"></script>
+</html>

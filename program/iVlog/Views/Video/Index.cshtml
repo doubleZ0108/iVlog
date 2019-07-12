@@ -1,0 +1,809 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_iVlogMainLayout.cshtml";
+}
+<script>
+    function getQueryStringValueBy(keyName) {
+        var searchStr = location.search.substr(1);
+        if (searchStr.length == 0)
+            return null;
+        var collection = searchStr.split('&');
+        for (var i = 0; i < collection.length; i++) {
+            var tmp = collection[i].split('=');
+            if (tmp.length < 2)
+                continue;
+            if (tmp[0].toUpperCase() == keyName.toUpperCase())
+                return tmp[1];
+        }
+        return null;
+    }
+
+
+    let video_id = "";
+    let user_id = "";
+    var $$ = function (sel) {
+        return document.querySelector(sel);
+    };
+    var $All = function (sel) {
+        return document.querySelectorAll(sel);
+    };
+    var $SON = function (father, son) {
+        return father.querySelectorAll(son);
+    };
+
+
+    window.onload = function () {
+
+        let video_id1 = getQueryStringValueBy("videoID");
+        video_id = window.atob(video_id1);
+        window.model.CookieToModel();
+        user_id = window.model.data.userID;
+
+
+        console.log("on load....");
+        var queryJson = [];
+        var row = {};
+        row.op = "null";
+        row.user_id = user_id;
+        row.video_id = video_id;
+        row.comment_content = "null";
+        queryJson.push(row);
+
+        $.ajax({
+            url: "/Video/Index",
+            async: false,
+            type: 'post',
+            contentType: "application/json",
+            data: JSON.stringify(queryJson[0]),
+            dataType: "json",
+            traditional: true,
+            success: function (data) {
+                //console.log(data);
+                data = eval("(" + data + ")");
+                console.log(data);
+                var video_data = data.video_info;
+                var comment_data = video_data.comment_info;
+                var rank_data = data.rank_info.ranks_info;
+
+
+                //TODO
+                document.getElementsByTagName("video")[0].setAttribute("src", video_data.video_path);
+                document.getElementById("uper_avatar").setAttribute("src", video_data.uper_avatar);
+                document.getElementById("comment-show-user-avatar").setAttribute("src", video_data.uper_avatar);
+                document.getElementById("uper_nickname").innerHTML = video_data.uper_nickname;
+                document.getElementById("comment-show-user").innerHTML = video_data.uper_nickname;
+
+                document.getElementById("video_description").innerHTML = video_data.video_description;
+                //document.getElementById("like_num").innerHTML = String("&#10084;") + video_data.like_num + String("点赞");
+                document.getElementById("video-like-num").innerHTML = video_data.like_num;
+                document.getElementById("video-commit-num").innerHTML = video_data.comment_num;
+                document.getElementById("video-collect-num").innerHTML = video_data.collect_num;
+                document.getElementById("video-share-num").innerHTML = video_data.share_num;
+
+                var comment_list = document.getElementById("comment_list");
+
+                comment_data.forEach(function (item, index) {
+                    var newComment = document.createElement('div');
+                    comment_list.appendChild(newComment);
+                    newComment.innerHTML = ['<div class="list-item">\n' +
+                        '                        <div class="user-face">\n' +
+                        '                            <img src="' + item.commenter_avatar + '" class="user-head">\n' +
+                        '                        </div>\n' +
+                        '                        <div class="con">\n' +
+                        '                            <div class="user">\n' +
+                        '                                <span style="border-color: #5896de; color: #5896de;">\n' +
+                        '                                    "' + item.commenter_nickname + '"\n' +
+                        '                                </span>\n' +
+                        '                            </div>\n' +
+                        '                            <p class="text" style="text-align: left;">\n' + item.comment_content + '\n' +
+                        '                            </p>\n' +
+                        '                            <div class="info">' + item.comment_time + '</div>\n' +
+                        '                        </div>\n' +
+                        '\n' +
+                        '                    </div>'];
+                })
+
+                var rank_list = document.getElementById("rank_list");
+                rank_data.forEach(function (item, index) {
+                    var newComment = document.createElement('div');
+                    rank_list.appendChild(newComment);
+                    newComment.innerHTML = ['<div class="video-page-card">\n' +
+                        ' 	<div class="card-box">\n' +
+                        '		<div class="pic-box">\n' +
+                        '			<div class="pic">\n' +
+                        '				<a href="#"><img src="' + item.video_cover + '" alt="' + item.video_name + '" width="168" height="95"></a>\n' +
+                        '			</div>\n' +
+                        '		</div>\n' +
+                        '	<div class="info">\n' +
+                        '		<a href="#" title="' + item.video_name + '"\n' +
+                        '		class="title">' + item.video_name + '</a>\n' +
+                        '		<div class="count">' + item.uper_nickname + '</div>\n' +
+                        '		<div class="count">' + item.play_num + '播放</div>\n' +
+                        '	</div>\n' +
+                        '	</div>\n' +
+                        '</div>']
+
+                })
+
+                var viewbox_report = document.getElementById("viewbox_report");
+                var newComment = document.createElement('div');
+                viewbox_report.appendChild(newComment);
+                newComment.innerHTML = ['<h1 title="' + video_data.video_title + '" class="video-title">\n' +
+                    '                    <span class="tit">' + video_data.video_title + '</span>\n' +
+                    '                </h1>\n' +
+                    '                <div class="video-data">\n' +
+                    '                    <span>分区 ' + video_data.zone_name + ' </span>\n' +
+                    '                    <span>&nbsp;标签 </span>\n' +
+                    '                    <span>' + video_data.upload_time + '</span>\n' +
+                    '                </div>']
+
+
+            },
+            error: function (message) {
+                alert("请求查询数据失败！");
+            }
+        });
+    }
+</script>
+
+<style>
+    body {
+        background-color: white;
+        background-image: url(../../img/header_footer/white-bg-1.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+    #main {
+        margin-left: 7%;
+        margin-right: 7%;
+    }
+
+    #top {
+        background-color: PowderBlue;
+        font-size: 30px;
+        width: 100%;
+    }
+
+    #left {
+        background-color: rgba(255,255,255,.8);
+        width: 100%;
+        height: 2000px;
+        padding: 5px 50px;
+    }
+
+    #right {
+        background-color: rgba(255,255,255,.3);
+        float: right;
+        font-family: Microsoft;
+        text-align: center;
+        height: auto;
+        width: 22%;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-left: solid 1px #d2d2d2;
+    }
+
+    #middle {
+        background-color: rgba(255,255,255,.3);
+        height: auto;
+        width: 75.5%;
+        float: left;
+        padding: 0 10px;
+    }
+
+    #foot {
+        background-color: PowderBlue;
+        font-size: 30px;
+        width: 100%;
+    }
+
+    #viewbox_report {
+        margin: 0;
+        text-align: left;
+    }
+
+
+    ul li {
+        display: inline;
+        list-style: none;
+        font-family: verdana;
+        margin-left: 30px;
+    }
+
+    .ops {
+        width: 800px;
+        height: 30px;
+    }
+
+    .video-like {
+        font-size: 20px;
+        color: #ccc;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: all .3s;
+    }
+
+        .video-like:hover {
+            color: #dc9db3;
+        }
+
+    .video-commit {
+        font-size: 20px;
+        color: #ccc;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: all .3s;
+    }
+
+        .video-commit:hover {
+            color: #54ce79;
+        }
+
+    .video-collect {
+        font-size: 20px;
+        color: #ccc;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: all .3s;
+    }
+
+        .video-collect:hover {
+            color: #5ba9df;
+        }
+
+    .video-share {
+        font-size: 20px;
+        color: #ccc;
+        cursor: pointer;
+        margin-right: 10px;
+        transition: all .3s;
+    }
+
+        .video-share:hover {
+            color: #dabb2a;
+        }
+
+    .video-like-afterclick {
+        color: #dc9db3;
+    }
+
+    .video-commit-afterclick {
+        color: #54ce79;
+    }
+
+    .video-collect-afterclick {
+        color: #5ba9df;
+    }
+
+    .video-share-afterclick {
+        color: #dabb2a;
+    }
+
+
+    .avatar {
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        position: relative;
+        background-color: #ddeac4;
+    }
+
+    .comment-send {
+        margin: 10px 0 10px 0;
+    }
+
+        .comment-send .user-face {
+            float: left;
+            margin: 7px 0 0 5px;
+            position: relative;
+        }
+
+            .comment-send .user-face .user-head {
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+            }
+
+    .ipt-txt {
+        font-size: 12px;
+        display: inline-block;
+        box-sizing: border-box;
+        border: solid 1px #9c9c9c;
+        background-color: #f4f5f7;
+        margin-left: 30px;
+        margin-right: 30px;
+        overflow: auto;
+        border-radius: 4px;
+        color: #555;
+        width: 70%;
+        height: 100px;
+        padding: 5px 10px 5px 10px;
+        line-height: normal;
+        resize: none;
+    }
+
+    .comment-send .commit-submit {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        padding: 4px 15px 4px 15px;
+        font-size: 14px;
+        color: #fff;
+        min-width: 60px;
+        border-radius: 4px;
+        text-align: center;
+        background-color: #56B7D6;
+        transition: all .5s;
+        outline: none;
+        border: solid 1px #b3b3b3;
+    }
+
+        .comment-send .commit-submit:hover {
+            background-color: #56B7D6;
+        }
+
+    .video-page-card {
+        padding: 10px 0 10px 0;
+    }
+
+        .video-page-card .card-box {
+            display: flex;
+        }
+
+            .video-page-card .card-box .pic-box {
+                position: relative;
+                width: 141px;
+                height: 80px;
+                border-radius: 2px;
+                background: #f4f5f7;
+            }
+
+            .video-page-card .card-box .info {
+                margin-left: 10px;
+                flex: 1;
+            }
+
+                .video-page-card .card-box .info .title {
+                    height: 36px;
+                    line-height: 18px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-bottom: 6px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    text-decoration: none;
+                    font-family: Microsoft;
+                }
+
+                .video-page-card .card-box .info .count {
+                    display: inline-block;
+                    height: 16px;
+                    width: 100%;
+                    color: #999;
+                    font-size: 12px;
+                }
+
+    .comment-list {
+        padding-top: 20px;
+    }
+
+        .comment-list .user-face {
+            float: left;
+            margin: 24px 0 0 5px;
+            position: relative;
+        }
+
+            .comment-list .user-face .user-head {
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+            }
+
+        .comment-list .list-item {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+        }
+
+            .comment-list .list-item .con {
+                position: relative;
+                margin-left: 85px;
+                padding: 22px 0 14px 0;
+                border-top: 1px solid #e5e9ef;
+            }
+
+            .comment-list .list-item .user {
+                font-size: 12px;
+                font-weight: 700;
+                line-height: 18px;
+                padding-bottom: 4px;
+                display: block;
+                word-wrap: break-word;
+            }
+
+            .comment-list .list-item .text {
+                line-height: 20px;
+                padding: 2px 0 2px 0;
+                font-size: 14px;
+                text-shadow: none;
+                overflow: hidden;
+                word-wrap: break-word;
+                word-break: break-word;
+            }
+
+            .comment-list .list-item .info {
+                color: #99a2aa;
+                line-height: 26px;
+                font-size: 12px;
+            }
+
+
+    .video-info .video-title {
+        font-size: 18px;
+        font-weight: 500;
+        text-align: left;
+        color: #212121;
+        line-height: 26px;
+        height: 26px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .video-info .video-data {
+        margin-top: 6px;
+        font-size: 12px;
+        height: 16px;
+        color: #999;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+        .video-info .video-data span {
+            min-width: 50px;
+            display: inline-block;
+            height: 16px;
+        }
+
+    .video-title {
+        margin-top: 20px;
+    }
+
+    a {
+        color: #319ed6;
+        transition: all .4s;
+    }
+
+        a:hover {
+            color: #78ab1f;
+        }
+
+    #touming {
+        opacity: 0;
+    }
+</style>
+
+<script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $(function () {
+        $(".video-like").click(function () {
+            $(this).toggleClass('video-like-afterclick');
+            var like_num = document.getElementById("video-like-num");
+            var like_state = document.getElementById("like_num");
+            if (like_state.className === "video-like") {
+                var queryJson = [];
+                var row = {};
+                row.op = "cancel_like";
+                row.user_id = user_id;
+                row.video_id = video_id;
+                row.comment_content = "null";
+                queryJson.push(row);
+
+                $.ajax({
+                    url: "/Video/Index",
+                    async: false,
+                    type: 'post',
+                    contentType: "application/json",
+                    data: JSON.stringify(queryJson[0]),
+                    dataType: "json",
+                    traditional: true,
+                    success: function (data) {
+                        console.log(data);
+                        var data = eval("(" + data + ")");
+
+                    },
+                    error: function (message) {
+                        alert("请求查询数据失败！");
+                    }
+                });
+                like_num.innerText = (parseInt(like_num.innerText) - 1);
+            }
+            else {
+                var queryJson = [];
+                var row = {};
+                row.op = "like";
+                row.user_id = user_id;
+                row.video_id = video_id;
+                row.comment_content = "null";
+                queryJson.push(row);
+
+                $.ajax({
+                    url: "/Video/Index",
+                    async: false,
+                    type: 'post',
+                    contentType: "application/json",
+                    data: JSON.stringify(queryJson[0]),
+                    dataType: "json",
+                    traditional: true,
+                    success: function (data) {
+                        console.log(data);
+                        var data = eval("(" + data + ")");
+
+                    },
+                    error: function (message) {
+                        alert("请求查询数据失败！");
+                    }
+                });
+                like_num.innerText = (parseInt(like_num.innerText) + 1);
+            }
+
+
+            console.log("like....");
+
+
+        })
+    })
+    $(function () {
+        $(".video-commit").click(function () {
+            $(this).toggleClass('video-commit-afterclick');
+            var commit_num = document.getElementById("video-commit-num");
+            var commit_state = document.getElementById("commit_num");
+            if (commit_state.className === "video-commit") {
+                commit_num.innerText = (parseInt(commit_num.innerText) - 1);
+            } else {
+                commit_num.innerText = (parseInt(commit_num.innerText) + 1);
+            }
+        })
+    })
+    $(function () {
+        $(".video-collect").click(function () {
+            $(this).toggleClass('video-collect-afterclick');
+            var collect_num = document.getElementById("video-collect-num");
+            var collect_state = document.getElementById("collect_num");
+            if (collect_state.className === "video-collect") {
+                var queryJson = [];
+                var row = {};
+                row.op = "cancel_favorite";
+                row.user_id = user_id;
+                row.video_id = video_id;
+                row.comment_content = "null";
+                queryJson.push(row);
+
+                $.ajax({
+                    url: "/Video/Index",
+                    async: false,
+                    type: 'post',
+                    contentType: "application/json",
+                    data: JSON.stringify(queryJson[0]),
+                    dataType: "json",
+                    traditional: true,
+                    success: function (data) {
+                        console.log(data);
+                        var data = eval("(" + data + ")");
+
+                    },
+                    error: function (message) {
+                        alert("请求查询数据失败！");
+                    }
+                });
+                collect_num.innerText = (parseInt(collect_num.innerText) - 1);
+            } else {
+
+                var queryJson = [];
+                var row = {};
+                row.op = "favorite";
+                row.user_id = user_id;
+                row.video_id = video_id;
+                row.comment_content = "null";
+                queryJson.push(row);
+
+                $.ajax({
+                    url: "/Video/Index",
+                    async: false,
+                    type: 'post',
+                    contentType: "application/json",
+                    data: JSON.stringify(queryJson[0]),
+                    dataType: "json",
+                    traditional: true,
+                    success: function (data) {
+                        console.log(data);
+                        var data = eval("(" + data + ")");
+
+                    },
+                    error: function (message) {
+                        alert("请求查询数据失败！");
+                    }
+                });
+                collect_num.innerText = (parseInt(collect_num.innerText) + 1);
+            }
+        })
+    })
+    $(function () {
+        $(".video-share").click(function () {
+            $(this).toggleClass('video-share-afterclick');
+            var share_num = document.getElementById("video-share-num");
+            var share_state = document.getElementById("share_num");
+            if (share_state.className === "video-share") {
+                share_num.innerText = (parseInt(share_num.innerText) - 1);
+            } else {
+                share_num.innerText = (parseInt(share_num.innerText) + 1);
+            }
+        })
+    })
+    $(function () {
+        $(".commit-submit").click(function () {
+            var btn = document.getElementById("comment-submit");
+            btn.setAttribute("disabled", "disabled");
+            btn.style.backgroundColor = '#f4f5f7';
+            btn.style.color = '#212121';
+            var touming = document.getElementById("touming");
+            touming.style.opacity = '1';
+            var comment_input = document.getElementById("comment-input");
+            var comment_show = document.getElementById("comment-show");
+            comment_show.innerText = comment_input.value;
+            var comment_show_time = document.getElementById("comment-show-time");
+            comment_show_time.innerText = getNowFormatDate();
+
+            var queryJson = [];
+            var row = {};
+            row.op = "comment";
+            row.user_id = user_id;
+            row.video_id = video_id;
+            row.comment_content = comment_input.value;
+            queryJson.push(row);
+
+            $.ajax({
+                url: "/Video/Index",
+                async: false,
+                type: 'post',
+                contentType: "application/json",
+                data: JSON.stringify(queryJson[0]),
+                dataType: "json",
+                traditional: true,
+                success: function (data) {
+                    console.log(data);
+                    var data = eval("(" + data + ")");
+
+                },
+                error: function (message) {
+                    alert("请求查询数据失败！");
+                }
+            });
+        })
+    })
+    function getNowFormatDate() {//获取当前时间
+        var date = new Date();
+        var seperator1 = "-";
+        var seperator2 = ":";
+        var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+        var strDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+        var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes();
+        return currentdate;
+    }
+</script>
+<script src="../../js/cookie/cookie.js"></script>
+<script src="../../js/cookie/model.js"></script>
+
+
+
+
+<div id="main">
+
+    <div id="left">
+
+        <div id="middle">
+
+            <div id="viewbox_report" class="video-info report-wrap-module report-scroll-module" scrollshow="true">
+                @*<h1 title="突破次元壁之全明星大乱斗！！！【JE2019】" class="video-title">
+                        <span class="tit">突破次元壁之全明星大乱斗！！！【JE2019】</span>
+                    </h1>
+                    <div class="video-data">
+                        <span>分区</span>
+                        <span>标签</span>
+                        <span>2019-07-07 20:47:02</span>
+                    </div>
+                    <div class="video-data">
+                        <span title="总播放数90298" class="view">9.0万播放</span>
+                    </div>*@
+            </div>
+
+            <br />
+
+            <video src="video/1.mp4" width="100%" controls="controls"></video>
+
+            <br />
+
+            <hr color=whitesmoke>
+            <div class="ops">
+                <span class="video-like" id="like_num">&#10084;点赞数(<span id="video-like-num">99</span>)</span>
+                <span class="video-commit" id="comment_num">&#9993;评论数(<span id="video-commit-num">62</span>)</span>
+                <span class="video-collect" id="collect_num">&#9733;收藏数(<span id="video-collect-num">38</span>)</span>
+                <span class="video-share" style="display:none;" id="share_num">&#10150;分享(<span id="video-share-num">47</span>)</span>
+            </div>
+            <hr color=whitesmoke>
+
+            <div class="comment-send">
+                <div class="user-face">
+                    <img src="../../img/video/cat.jpg" class="user-head" id="comment-show-user-avatar">
+                </div>
+                <textarea cols="80" rows="5" placeholder="请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。" class="ipt-txt" id="comment-input"></textarea>
+                <button type="submit" class="commit-submit" id="comment-submit" onclick="comment_submit()">发表评论</button>
+            </div>
+
+
+            <hr color=grey>
+
+            <div class="comment-list" id="comment_list">
+            </div>
+            <div class="comment-list">
+                <div class="list-item" id="touming">
+                    <div class="user-face">
+                        <img src="../../img/video/cat.jpg" class="user-head">
+                    </div>
+                    <div class="con">
+                        <div class="user">
+                            <a>
+                                <span style="border-color: #5896de;" id="comment-show-user">
+                                    "评论人"
+                                </span>
+                            </a>
+                        </div>
+                        <p class="text" id="comment-show">
+                            评论信息
+                        </p>
+                        <div class="info" id="comment-show-time">评论时间</div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="right">
+            <br /><br />
+            <div>
+                <img src="../../img/video/cat.jpg" width="200px" height="200px" align="center" class="avatar" id="uper_avatar"></a>
+            </div>
+            <a><h4 id="uper_nickname">姓名</h4></a>
+            <hr>
+            <p style="color:#999;text-align:justify;font-size:14px;word-wrap: break-word; margin:0 30px;" id="video_description">
+                Japan Expo 2019 第一名
+                观众选择奖
+                Song ♫ :
+                Terminte & Panda - Highscore
+                Rameses B - Darkest Place (Ft. Aloma Steele)
+                Worlds Collide - Ft Nicki Taylor
+            </p>
+
+
+            <br /><br /><br /><br /><br /><br />
+            <hr color=grey>
+            <hr color=grey>
+            <h3>相关推荐</h3>
+
+            <div id="rank_list">
+            </div>
+        </div>
+    </div>
+</div>

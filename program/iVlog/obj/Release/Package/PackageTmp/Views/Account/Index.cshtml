@@ -1,0 +1,215 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>iVlog-短视频微博平台</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+    <link rel="stylesheet" href="../../css/login_register/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../../css/login_register/demo.css" />
+    <link rel="stylesheet" href="../../css/login_register/templatemo-style.css">
+
+    <script type="text/javascript" src="../../js/login_register/modernizr.custom.86080.js"></script>
+    <script>
+        window.onload = function () {
+
+            window.model.CookieToModel();
+            window.model.data.userID = "";
+            window.model.ModelToCookie();
+            console.log(userID)
+
+        }
+
+    </script>
+
+
+</head>
+
+<body>
+    <div id="ini_background" class="ini_background" onclick="a()">
+        <!--	<img src="img/iVlog-covered.png"style="width:100%;height:100%;align:center;z-index:1002;"/>-->
+        <img src="../../img/login_register/background.png" style="width:100%;height:100%;z-index:1001;" />
+
+
+    </div>
+    <div id="particles-js"></div>
+
+    <ul class="cb-slideshow" id="slide">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+
+    <div class="container-fluid" align="center" id="woaijingning">
+        <br /><br /><br />
+        <div class="to_hide">
+            <div class="tm-content col-xl-4 col-sm-4 col-xs-4" align="center">
+                <div class="overlapping">
+                    <p style="align:center;font-size:50px; ">iVlog-登录</p>
+                    <br />
+                    <div>
+
+                        <div class="col-md-10 col-sm-10 col-xs-10">
+                            <br />
+                            <input type="text" class="form-control" id="login_name" placeholder="用户名..." required />
+                            <br />
+                            <input type="password" class="form-control" id="login_psw" placeholder="密码..." required />
+                            <br />
+                            <div>
+                                <input position="relative" float="left" left="0px" top="0px" z-index="3" type="checkbox" class="form-check-label" id="remember_me" value="你好" placeholder="记住我" />记住我
+                            </div>
+                            <br />
+
+                            <div align="middle">
+                                <button type="submit" align="center" class="tm-btn-subscribe" onclick="action_login();" />&emsp;登录&emsp;</button>
+                                &nbsp;&nbsp;
+                                <button type="submit" align="center" class="tm-btn-subscribe" onclick="RegisterClick();" />&emsp;注册&emsp;</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-link" id="foot">
+            <p>同济大学-软件学院</p>
+        </div>
+    </div>
+    <script>
+        function RegisterClick() {
+            window.location.replace("../Account/Register");
+        }
+    </script>
+</body>
+<script type="text/javascript" src="../../js/login_register/animation_particles.js"></script>
+<script type="text/javascript" src="../../js/login_register/login.js"></script>
+<script src="../../js/jquery.js"></script>
+<script type="text/javascript" src="../../js/login_register/indexOnLoad.js"></script>
+<script src="~/js/cookie/cookie.js"></script>
+<script src="~/js/cookie/model.js"></script>
+
+</html>
+
+@*<!DOCTYPE html>
+    <html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>iVlog-短视频微博平台</title>
+
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">  <!-- Google web font "Open Sans" -->
+        <link rel="stylesheet" href="../../css/login_register/font-awesome.min.css">
+        <link rel="stylesheet" href="../../css/bootstrap.min.css">
+
+        <link rel="stylesheet" href="../../css/login_register/demo.css" />
+        <link rel="stylesheet" href="../../css/login_register/templatemo-style.css">
+
+        <script type="text/javascript" src="../../js/login_register/modernizr.custom.86080.js"></script>
+
+
+        <script type="text/javascript">
+            window.onload=function(){
+                $('#woaijingning').hide();
+                $('#particles-js').hide();
+                $('#slide').hide();
+                $('#foot').hide();
+                alert("!");
+            }
+        </script>
+    </head>
+
+    <body>
+        <div id="ini_background" class="ini_background" onmousemove="a();">
+            <!--	<img src="img/iVlog-covered.png"style="width:100%;height:100%;align:center;z-index:1002;"/>-->
+            <img src="../../img/login_register/background.png" style="width:100%;height:100%;z-index:1001;" />
+
+
+        </div>
+        <div id="particles-js"></div>
+
+        <ul class="cb-slideshow" id="slide">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+
+        <div class="container-fluid" align="center" id="woaijingning">
+            <br /><br /><br />
+            <div class="to_hide">
+                <div class="tm-content col-xl-5 col-sm-5 col-xs-5" align="center">
+                    <div class="overlapping">
+                        <p style="align:center;font-size:50px; ">iVlog-登录</p>
+                        <br />
+                        <div class="row form-section">
+
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                                <input type="text" class="form-control" id="login_name" placeholder="用户名..." required />
+                                <br />
+                                <input type="password" class="form-control" id="login_psw" placeholder="密码..." required />
+                                <br />
+                                <div>
+                                    <input position="relative" float="left" left="0px" top="0px" z-index="3" type="checkbox" class="form-check-label" id="remember_me" onclick="remember" />记住我
+                                </div>
+                                <br />
+
+                                <div align="middle">
+                                    <button type="submit" align="center" class="tm-btn-subscribe" onclick="action_login();" />&emsp;&emsp;登录&emsp;&emsp;</button>
+                                    &emsp;&emsp;
+                                    <button type="submit" align="center" class="tm-btn-subscribe" onclick="RegisterClick();" />&emsp;&emsp;注册&emsp;&emsp;</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--					<div class="tm-social-icons-container text-xs-center">-->
+                    <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-facebook"></i></a>-->
+                    <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-google-plus"></i></a>-->
+                    <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-twitter"></i></a>-->
+                    <!--	                    <a href="#" class="tm-social-link"><i class="fa fa-linkedin"></i></a>-->
+                    <!--	                </div>-->
+
+                </div>
+
+            </div>
+
+            <div class="footer-link" id="foot">
+                <p>同济大学-软件学院</p>
+            </div>
+        </div>
+
+        <script>
+            function RegisterClick() {
+                window.location.replace("http://localhost:54016/Account/Register");
+            }
+        </script>
+    </body>
+
+    <script type="text/javascript" src="../../js/login_register/animation_particles.js"></script>
+    <script type="text/javascript" src="../../js/login_register/login.js"></script>
+    <script src="../../js/jquery.js"></script>
+    </html>*@
+

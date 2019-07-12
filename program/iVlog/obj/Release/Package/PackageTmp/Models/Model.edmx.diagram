@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="164ea619d9bd4d29a134f1995af48eed" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.ADMINISTRATOR" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.COMMENTS" Width="1.5" PointX="0.75" PointY="20.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.FAVORITE" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.GET_MESSAGE" Width="1.5" PointX="5.25" PointY="30.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HAS_COMMENT" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HAS_FAVORITES" Width="1.5" PointX="5.25" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HAS_VIDEO" Width="1.5" PointX="3" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.HAS_ZONE" Width="1.5" PointX="3" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MESSAGE_LIBRARY" Width="1.5" PointX="3" PointY="35.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RANKING" Width="1.5" PointX="3.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SEND_COMMENT" Width="1.5" PointX="5.25" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SEND_MESSAGE" Width="1.5" PointX="8.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SORT_VIDEO" Width="1.5" PointX="6" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TAG" Width="1.5" PointX="3" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UPLOAD_VIDEO" Width="1.5" PointX="5.25" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USER_RELATIONSHIP" Width="1.5" PointX="5.25" PointY="40.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.USERS" Width="1.5" PointX="3" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VIDEOS" Width="1.5" PointX="0.75" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.VISIT" Width="1.5" PointX="5.25" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ZONE" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <AssociationConnector Association="Model.SYS_C0010352" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010355" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010343" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010346" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010379" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010380" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010356" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010344" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010347" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010349" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010350" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010377" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010364" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010353" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010376" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010365" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010358" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010359" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010370" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010371" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010374" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SYS_C0010373" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.HAS_TAG" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.LIKES" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

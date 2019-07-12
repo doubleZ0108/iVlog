@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="ADMINISTRATOR">
+      <EntityTypeMapping TypeName="Model.ADMINISTRATOR">
+        <MappingFragment StoreEntitySet="ADMINISTRATOR">
+          <ScalarProperty Name="ADMINISTRATOR_ID" ColumnName="ADMINISTRATOR_ID" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="NICK_NAME" ColumnName="NICK_NAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="FANS_NUM" ColumnName="FANS_NUM" />
+          <ScalarProperty Name="FOLLOW_NUM" ColumnName="FOLLOW_NUM" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="SIGNATURE" ColumnName="SIGNATURE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TEL" ColumnName="TEL" />
+          <ScalarProperty Name="WECHAT" ColumnName="WECHAT" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMMENTS">
+      <EntityTypeMapping TypeName="Model.COMMENTS">
+        <MappingFragment StoreEntitySet="COMMENTS">
+          <ScalarProperty Name="COMMENT_ID" ColumnName="COMMENT_ID" />
+          <ScalarProperty Name="COMMENT_CONTENT" ColumnName="COMMENT_CONTENT" />
+          <ScalarProperty Name="LIKES_NUM" ColumnName="LIKES_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FAVORITE">
+      <EntityTypeMapping TypeName="Model.FAVORITE">
+        <MappingFragment StoreEntitySet="FAVORITE">
+          <ScalarProperty Name="FAVORITE_ID" ColumnName="FAVORITE_ID" />
+          <ScalarProperty Name="FAVORITE_NAME" ColumnName="FAVORITE_NAME" />
+          <ScalarProperty Name="VIDEO_NUM" ColumnName="VIDEO_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GET_MESSAGE">
+      <EntityTypeMapping TypeName="Model.GET_MESSAGE">
+        <MappingFragment StoreEntitySet="GET_MESSAGE">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
+          <ScalarProperty Name="READ_STATE" ColumnName="READ_STATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAS_COMMENT">
+      <EntityTypeMapping TypeName="Model.HAS_COMMENT">
+        <MappingFragment StoreEntitySet="HAS_COMMENT">
+          <ScalarProperty Name="COMMENT_ID" ColumnName="COMMENT_ID" />
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+          <ScalarProperty Name="COMMENT_TIME" ColumnName="COMMENT_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAS_FAVORITES">
+      <EntityTypeMapping TypeName="Model.HAS_FAVORITES">
+        <MappingFragment StoreEntitySet="HAS_FAVORITES">
+          <ScalarProperty Name="FAVORITE_ID" ColumnName="FAVORITE_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAS_VIDEO">
+      <EntityTypeMapping TypeName="Model.HAS_VIDEO">
+        <MappingFragment StoreEntitySet="HAS_VIDEO">
+          <ScalarProperty Name="FAVORITE_ID" ColumnName="FAVORITE_ID" />
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+          <ScalarProperty Name="ADD_TIME" ColumnName="ADD_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HAS_ZONE">
+      <EntityTypeMapping TypeName="Model.HAS_ZONE">
+        <MappingFragment StoreEntitySet="HAS_ZONE">
+          <ScalarProperty Name="ZONE_NAME" ColumnName="ZONE_NAME" />
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MESSAGE_LIBRARY">
+      <EntityTypeMapping TypeName="Model.MESSAGE_LIBRARY">
+        <MappingFragment StoreEntitySet="MESSAGE_LIBRARY">
+          <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
+          <ScalarProperty Name="MESSAGE_TYPE" ColumnName="MESSAGE_TYPE" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="TIME" ColumnName="TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RANKING">
+      <EntityTypeMapping TypeName="Model.RANKING">
+        <MappingFragment StoreEntitySet="RANKING">
+          <ScalarProperty Name="REFRESH_TIME" ColumnName="REFRESH_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEND_COMMENT">
+      <EntityTypeMapping TypeName="Model.SEND_COMMENT">
+        <MappingFragment StoreEntitySet="SEND_COMMENT">
+          <ScalarProperty Name="COMMENT_ID" ColumnName="COMMENT_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SEND_MESSAGE">
+      <EntityTypeMapping TypeName="Model.SEND_MESSAGE">
+        <MappingFragment StoreEntitySet="SEND_MESSAGE">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="MESSAGE_ID" ColumnName="MESSAGE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SORT_VIDEO">
+      <EntityTypeMapping TypeName="Model.SORT_VIDEO">
+        <MappingFragment StoreEntitySet="SORT_VIDEO">
+          <ScalarProperty Name="REFRESH_TIME" ColumnName="REFRESH_TIME" />
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="RANK" ColumnName="RANK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAG">
+      <EntityTypeMapping TypeName="Model.TAG">
+        <MappingFragment StoreEntitySet="TAG">
+          <ScalarProperty Name="TAG_NAME" ColumnName="TAG_NAME" />
+          <ScalarProperty Name="REFER_NUM" ColumnName="REFER_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UPLOAD_VIDEO">
+      <EntityTypeMapping TypeName="Model.UPLOAD_VIDEO">
+        <MappingFragment StoreEntitySet="UPLOAD_VIDEO">
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USER_RELATIONSHIP">
+      <EntityTypeMapping TypeName="Model.USER_RELATIONSHIP">
+        <MappingFragment StoreEntitySet="USER_RELATIONSHIP">
+          <ScalarProperty Name="ACTIVE_USER_ID" ColumnName="ACTIVE_USER_ID" />
+          <ScalarProperty Name="PASSIVE_USER_ID" ColumnName="PASSIVE_USER_ID" />
+          <ScalarProperty Name="RELATIONSHIP_TYPE" ColumnName="RELATIONSHIP_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERS">
+      <EntityTypeMapping TypeName="Model.USERS">
+        <MappingFragment StoreEntitySet="USERS">
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="IS_ADMIN" ColumnName="IS_ADMIN" />
+          <ScalarProperty Name="NICK_NAME" ColumnName="NICK_NAME" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="AVATAR" ColumnName="AVATAR" />
+          <ScalarProperty Name="GENDER" ColumnName="GENDER" />
+          <ScalarProperty Name="FANS_NUM" ColumnName="FANS_NUM" />
+          <ScalarProperty Name="FOLLOW_NUM" ColumnName="FOLLOW_NUM" />
+          <ScalarProperty Name="LOCATION" ColumnName="LOCATION" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="SIGNATURE" ColumnName="SIGNATURE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="TEL" ColumnName="TEL" />
+          <ScalarProperty Name="WECHAT" ColumnName="WECHAT" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIDEOS">
+      <EntityTypeMapping TypeName="Model.VIDEOS">
+        <MappingFragment StoreEntitySet="VIDEOS">
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+          <ScalarProperty Name="PRIVACY" ColumnName="PRIVACY" />
+          <ScalarProperty Name="COVER" ColumnName="COVER" />
+          <ScalarProperty Name="PATH" ColumnName="PATH" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="LIKES_NUM" ColumnName="LIKES_NUM" />
+          <ScalarProperty Name="PLAY_NUM" ColumnName="PLAY_NUM" />
+          <ScalarProperty Name="COLLECT_NUM" ColumnName="COLLECT_NUM" />
+          <ScalarProperty Name="SHARE_NUM" ColumnName="SHARE_NUM" />
+          <ScalarProperty Name="UPLOAD_TIME" ColumnName="UPLOAD_TIME" />
+          <ScalarProperty Name="TITLE" ColumnName="TITLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VISIT">
+      <EntityTypeMapping TypeName="Model.VISIT">
+        <MappingFragment StoreEntitySet="VISIT">
+          <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+          <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+          <ScalarProperty Name="VISIT_TIME" ColumnName="VISIT_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZONE">
+      <EntityTypeMapping TypeName="Model.ZONE">
+        <MappingFragment StoreEntitySet="ZONE">
+          <ScalarProperty Name="ZONE_NAME" ColumnName="ZONE_NAME" />
+          <ScalarProperty Name="VIDEO_NUM" ColumnName="VIDEO_NUM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="HAS_TAG" TypeName="Model.HAS_TAG" StoreEntitySet="HAS_TAG">
+      <EndProperty Name="VIDEOS">
+        <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+      </EndProperty>
+      <EndProperty Name="TAG">
+        <ScalarProperty Name="TAG_NAME" ColumnName="TAG_NAME" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LIKES" TypeName="Model.LIKES" StoreEntitySet="LIKES">
+      <EndProperty Name="VIDEOS">
+        <ScalarProperty Name="VIDEO_ID" ColumnName="VIDEO_ID" />
+      </EndProperty>
+      <EndProperty Name="USERS">
+        <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

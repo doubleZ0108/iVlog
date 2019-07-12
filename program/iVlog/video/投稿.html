@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta name="spm_prefix" content="333.22">
+    <title>投稿 - 哔哩哔哩弹幕视频网 - ( ゜- ゜)つロ 乾杯~ - bilibili</title>
+    <style>
+        body {
+            margin-left: 15%;
+            margin-right: 15%;
+        }
+
+        #app {
+            box-sizing: border-box;
+        }
+
+        .upload-v2-container[data-v-6ec1eb48] {
+            padding-top: 6px;
+        }
+
+        .file-list-v2-container .file-title[data-v-30e71375] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .file-list-v2-container .file-title h1[data-v-30e71375] {
+            font-size: 20px;
+            color: #222;
+            margin-right: 10px;
+        }
+
+        .file-list-v2-container .file-title p[data-v-30e71375] {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .file-list-v2-wrp[data-v-989a575e] {
+            margin: 16px 0 13px 0;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item[data-v-989a575e] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            padding: 24px 0 24px 0;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-icon[data-v-989a575e] {
+            width: 36px;
+            height: 24px;
+            background: url(img1.jpg) no-repeat;
+            background-size: 100% 100%;
+            margin-right: 24px;
+            font-size: 12px;
+            color: #fff;
+            line-height: 24px;
+            cursor: move;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp[data-v-989a575e] {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-status-wrp[data-v-989a575e] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-status-wrp p.item-title[data-v-989a575e] {
+            font-size: 14px;
+            color: #222;
+            line-height: 32px;
+            cursor: pointer;
+            max-width: 515px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-status-wrp .item-status-op[data-v-989a575e] {
+            font-size: 12px;
+            color: #666;
+            line-height: 14px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: end;
+            -webkit-justify-content: flex-end;
+            -ms-flex-pack: end;
+            justify-content: flex-end;
+            position: relative;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-status-wrp .item-status-op .item-status-click[data-v-989a575e] {
+            padding-right: 25px;
+            cursor: pointer;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-status-wrp .item-status-op > i[data-v-989a575e], .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-status-wrp .item-status-op > span[data-v-989a575e] {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .icon-success-v2 {
+            width: 14px;
+            background: url(img1.jpg);
+            background-size: 100% 100%;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-upload-info[data-v-989a575e] {
+            font-size: 12px;
+            color: #99a2aa;
+            padding: 6px 0 4px 0;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-upload-progress[data-v-989a575e] {
+            height: 2px;
+            border-radius: 4px;
+            background-color: #e7e7e7;
+        }
+
+        .file-list-v2-wrp .file-list-v2-item .file-list-v2-item-wrp .item-upload-progress .item-upload-progress-complete[data-v-989a575e] {
+            background-color: #43ce5b;
+        }
+
+        .file-list-v2-container .file-add-btn-group[data-v-30e71375] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .file-list-v2-container .file-add-btn[data-v-30e71375] {
+            position: relative;
+            background: #00a1d6;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #fff;
+            text-align: center;
+            line-height: 14px;
+            padding: 13px 0;
+            width: 120px;
+            cursor: pointer;
+            -webkit-transition: opacity .3s ease;
+            transition: opacity .3s ease;
+        }
+
+        .file-list-v2-container .file-add-btn .file-add-btn-img[data-v-30e71375] {
+            vertical-align: middle;
+            width: 16px;
+            height: 16px;
+        }
+
+        .file-list-v2-container .file-add-btn .file-add-btn-title[data-v-30e71375] {
+            vertical-align: middle;
+        }
+
+        .file-list-v2-container .file-add-btn #bili-upload-btn-more[data-v-30e71375] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+        }
+
+        .dividing-line[data-v-30e71375] {
+            padding-top: 32px;
+            border-bottom: 1px solid #ccd0d7;
+        }
+
+        .normal-v2-container .normal-title-wrp[data-v-640a3622] {
+            padding: 32px 0;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+        }
+
+        .normal-v2-container .normal-title-wrp > h1[data-v-640a3622] {
+            font-size: 20px;
+            color: #222;
+        }
+
+        .section-title-v2-container[data-v-704ae438] {
+            display: -webkit-inline-flex;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .section-title-v2-container .section-title-v2-content-main[data-v-704ae438] {
+            font-size: 16px;
+            color: #101010;
+            line-height: 21px;
+            font-weight: 400;
+        }
+
+        .section-title-v2-container .section-title-v2-content-sub[data-v-704ae438] {
+            font-size: 12px;
+            color: #6d757a;
+            line-height: 21px;
+            margin-left: 6px;
+        }
+
+        .cover-v2-container .cover-v2-detail-wrp[data-v-5f41e6e1] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            margin-top: 24px;
+        }
+
+        .cover-v2-container .cover-v2-detail-wrp .cover-v2-preview[data-v-5f41e6e1] {
+            width: 200px;
+            height: 126px;
+            cursor: pointer;
+            margin-right: 44px;
+        }
+
+        .cover-v2-container .cover-v2-detail-wrp .cover-v2-preview .cover-v2-preview-show[data-v-5f41e6e1] {
+            height: 100%;
+            border-radius: 4px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-v2-container .cover-v2-detail-wrp .cover-v2-preview .cover-v2-preview-show img.cover-preview-show[data-v-5f41e6e1] {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+
+        .cover-v2-container .cover-v2-detail-wrp .cover-v2-preview .cover-v2-preview-show .cover-v2-upload-show-tip[data-v-5f41e6e1] {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            font-size: 12px;
+            color: #fff;
+            text-align: center;
+            width: 60px;
+            line-height: 22px;
+            border-radius: 4px 0 4px 0;
+            background: rgba(0, 0, 0, .5);
+        }
+
+        .ui-v2-normal-line-white-divide {
+            height: 24px;
+            background: transparent;
+        }
+
+        .section-title-v2-container[data-v-704ae438] {
+            display: -webkit-inline-flex;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            position: relative;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        .section-title-v2-container .section-title-v2-deg[data-v-704ae438] {
+            color: #fc403c;
+            font-size: 18px;
+            line-height: 18px;
+            height: 18px;
+        }
+
+        .section-title-v2-container .section-title-v2-content-main[data-v-704ae438] {
+            font-size: 16px;
+            color: #101010;
+            line-height: 21px;
+            font-weight: 400;
+        }
+
+        .copyright-v2-container .copyright-v2-check-radio-wrp[data-v-da25fc02] {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            margin-top: 12px;
+        }
+
+        .check-radio-v2-container[data-v-53cf102e] {
+            cursor: pointer;
+            margin-right: 20px;
+            display: inline-block;
+        }
+
+        .check-radio-v2-container .check-radio-v2-box[data-v-53cf102e] {
+            border: 1px solid #bec3cc;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            margin-right: 6px;
+            padding: 3px;
+        }
+
+        .check-radio-v2-container .check-radio-v2-name[data-v-53cf102e] {
+            font-size: 14px;
+            color: #000;
+            line-height: 14px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .select-box-v2-container[data-v-10ce25a8] {
+            position: relative;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .select-box-v2-container .select-box-v2-controller[data-v-10ce25a8] {
+            padding: 8px 12px;
+            border: 1px solid #ccd0d7;
+            border-radius: 4px;
+            min-width: 200px;
+            display: -webkit-inline-flex;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-pack: justify;
+            -webkit-justify-content: space-between;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            cursor: pointer;
+            color: #99a2aa;
+            -webkit-transition: border .3s ease;
+            transition: border .3s ease;
+        }
+
+        .select-box-v2-container .select-box-v2-controller .select-item-cont[data-v-10ce25a8] {
+            line-height: 22px;
+            height: 22px;
+            font-size: 14px;
+            display: inline-block;
+            white-space: nowrap;
+        }
+
+        .select-box-v2-container .select-box-v2-controller .selebox-box-v2-drop-icon[data-v-10ce25a8] {
+            -webkit-transition: -webkit-transform .3s ease;
+            transition: -webkit-transform .3s ease;
+        }
+
+        .select-box-v2-container .select-box-v2-controller i[data-v-10ce25a8] {
+            display: inline-block;
+            font-size: 14px;
+            margin-left: 12px;
+        }
+        .content-tag-v2-container .content-tag-v2-input-wrp[data-v-063bec8e], .content-title-v2-container .content-title-v2-input-wrp[data-v-b3b70444] {
+            margin-top: 12px;
+        }
+        .input-box-v2-1-container[data-v-4550f808] {
+            background: hsla(0,0%,85%,0);
+            border: 1px solid #ccd0d7;
+            border-radius: 4px;
+            padding: 0 12px;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -webkit-align-items: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-flex-wrap: wrap;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-transition: border .3s ease;
+            transition: border .3s ease;
+        }
+        .input-box-v2-1-container .input-box-v2-1-instance[data-v-4550f808] {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            min-width: 200px;
+            margin: 8px 0;
+        }
+        .input-box-v2-1-container .input-box-v2-1-instance .input-box-v2-1-val[data-v-4550f808] {
+            display: block;
+            width: 100%;
+            color: #222;
+            line-height: 22px;
+            height: 22px;
+            font-size: 14px;
+            outline: 0;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border: 0;
+            background-color: transparent;
+        }
+        .input-box-v2-1-container .input-box-v2-1-max-tip[data-v-4550f808] {
+            font-size: 14px;
+            color: #9ba4ac;
+            margin: 8px 0 8px 12px;
+        }
+    </style>
+</head>
+<body>
+<div data-v-1fd51a84="" id="app" class="canary-container">
+    <div data-v-6ec1eb48="" class="upload-v2-container">
+
+        <div class="upload-v2-step2-container" style="">
+
+
+            <div class="file-list-v2-container">
+
+                <div data-v-30e71375="" class="file-title">
+                    <h1 data-v-30e71375="">文件上传</h1>
+                    <p data-v-30e71375="">（单次最多允许上传100p视频，推荐采用mp4、flv格式，可有效缩短审核转码耗时）</p>
+                </div>
+
+                <div data-v-989a575e="" class="file-list-v2-wrp">
+                    <div data-v-989a575e="">
+                        <div data-v-989a575e="" class="file-list-v2-item">
+
+                            <div data-v-989a575e="" class="file-list-v2-item-icon"><span data-v-989a575e="">P1</span>
+                            </div>
+
+                            <div data-v-989a575e="" class="file-list-v2-item-wrp">
+                                <div data-v-989a575e="" class="item-status-wrp">
+                                    <p data-v-989a575e="" class="item-title">1</p>
+                                    <div data-v-989a575e="" class="item-status-op">
+                                        <span data-v-989a575e="" class="item-status-click">删除</span> <!---->
+                                        <i data-v-989a575e="" class="icon-success-v2"></i> <!----> <!----></div>
+                                </div>
+                                <div data-v-989a575e="" class="item-upload-info"><span data-v-989a575e=""
+                                                                                       class="upload-status-intro">上传完成</span>
+                                </div>
+                                <div data-v-989a575e="" class="item-upload-progress">
+                                    <div data-v-989a575e="" class="item-upload-progress-complete"
+                                         style="width: 100%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div data-v-30e71375="" class="file-add-btn-group">
+                    <div data-v-30e71375="" class="file-add-btn"><img data-v-30e71375=""
+                                                                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAPhJREFUSA3tVm0KwjAMXf1A2BFkehvv4gU8xfyxn97F66h4ABFEZn0ZKdTClqZD2I8GQrMmL699Y2FFMXWz1i7hR3hN8d/PC5It/M2+0RIutADUG/iLcTMtXg3QEoT1mTBUZPRzlnS0hGGDFElbr4kfe9v9YffhY2rMUbKG00ctWYUCV0dTJ+bQFpibMabtgADV2Nh7jRD2GmFKzj6xUjPJqOYEwkPM6aRmqry7oVbSM7PssF4iGOmGV9zwE1H7WwL5K/iDnd6nylIkJTWc+bHbG1xTCAcbSslMKCmkzmdJ1ZJJgJS/NpoWK26snhwphHeQNUxI8bTtC6n0ShyL6cu0AAAAAElFTkSuQmCC"
+                                                                      alt="icon_add" class="file-add-btn-img"> <span
+                            data-v-30e71375="" class="file-add-btn-title">添加视频</span>
+                        <div data-v-30e71375="" id="bili-upload-btn-more"></div>
+                    </div> <!----></div>
+
+                <div data-v-30e71375="" class="dividing-line"></div>
+
+            </div>
+
+
+            <div class="file-content-v2-container">
+
+                <div class="normal-v2-container">
+
+                    <div data-v-640a3622="" class="normal-title-wrp">
+                        <h1 data-v-640a3622="">基本信息</h1>
+                    </div>
+
+                    <div data-v-5f41e6e1="" data-v-640a3622="" class="cover-v2-container">
+
+                        <div data-v-704ae438="" data-v-5f41e6e1="" class="section-title-v2-container">
+                            <h3 data-v-704ae438="" class="section-title-v2-content-main">视频封面设置</h3>
+                            <p data-v-704ae438="" class="section-title-v2-content-sub">
+                                （格式jpeg、png，文件大小≤5MB，建议尺寸≥1146*717，最低尺寸≥960*600）</p>
+                        </div>
+
+                        <div data-v-5f41e6e1="" class="cover-v2-detail-wrp">
+
+                            <div data-v-5f41e6e1="" class="cover-v2-preview">
+
+                                <div data-v-5f41e6e1="" class="cover-v2-preview-show">
+                                    <img data-v-5f41e6e1="" src="img1.jpg" alt="cover-preview-show"
+                                         class="cover-preview-show">
+                                    <span data-v-5f41e6e1="" class="cover-v2-upload-show-tip">上传封面</span>
+                                </div>
+                                <input data-v-5f41e6e1="" type="file" accept="image/jpeg, image/jpg, image/png"></div>
+                        </div>
+
+                    </div>
+
+                    <div class="ui-v2-normal-line-white-divide"></div>
+
+                    <div data-v-da25fc02="" data-v-640a3622="" class="copyright-v2-container">
+
+                        <div data-v-704ae438="" data-v-da25fc02="" class="section-title-v2-container">
+                            <p data-v-704ae438="" class="section-title-v2-deg">*</p>
+                            <h3 data-v-704ae438="" class="section-title-v2-content-main">类型</h3>
+                        </div>
+
+                        <div data-v-da25fc02="" class="copyright-v2-check-radio-wrp">
+                            <div data-v-53cf102e="" data-v-da25fc02="" class="check-radio-v2-container">
+                                <span data-v-53cf102e="" class="check-radio-v2-box check-radio-v2-box-checked"></span>
+                                <span data-v-53cf102e="" class="check-radio-v2-name">自制</span>
+                            </div>
+                            <div data-v-53cf102e="" data-v-da25fc02="" class="check-radio-v2-container">
+                                <span data-v-53cf102e="" class="check-radio-v2-box"></span>
+                                <span data-v-53cf102e="" class="check-radio-v2-name">转载</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ui-v2-normal-line-white-divide"></div>
+
+                    <div data-v-c90917e2="" data-v-640a3622="" id="type-list-v2-container" class="type-list-v2-container">
+
+                        <div data-v-704ae438="" data-v-c90917e2="" class="section-title-v2-container">
+                            <p data-v-704ae438="" class="section-title-v2-deg">*</p>
+                            <h3 data-v-704ae438="" class="section-title-v2-content-main">分区</h3> <!----> <!----> <!---->
+                        </div>
+                        <div data-v-c90917e2="" class="type-list-v2-selector-wrp">
+                            <div data-v-10ce25a8="" data-v-c90917e2="" class="select-box-v2-container">
+                                <div data-v-10ce25a8=""
+                                     class="select-box-v2-controller select-box-v2-controller-selected"><p
+                                        data-v-10ce25a8="" class="select-item-cont">
+                                    点击选择</p> <i data-v-10ce25a8=""
+                                                class="selebox-box-v2-drop-icon iconfont icon-ic_collapse" style=""></i>
+                                </div>
+                                <div data-v-5d902fe9="" data-v-c90917e2="" data-v-10ce25a8=""
+                                     class="drop-cascader-container" style="top: 50px;">
+                                    <div data-v-5d902fe9="" class="drop-cascader-pre-wrp">
+
+                                        <div data-v-5d902fe9="" class="drop-cascader-pre-item"><p data-v-5d902fe9=""
+                                                                                                  class="pre-item-content">
+                                            游戏</p> <i data-v-5d902fe9=""
+                                                      class="pre-item-icon iconfont icon-ic_into"></i></div>
+                                        <div data-v-5d902fe9="" class="drop-cascader-pre-item"><p data-v-5d902fe9=""
+                                                                                                  class="pre-item-content">
+                                            生活</p> <i data-v-5d902fe9=""
+                                                      class="pre-item-icon iconfont icon-ic_into"></i></div>
+                                        <div data-v-5d902fe9="" class="drop-cascader-pre-item"><p data-v-5d902fe9=""
+                                                                                                  class="pre-item-content">
+                                            娱乐</p> <i data-v-5d902fe9=""
+                                                      class="pre-item-icon iconfont icon-ic_into"></i></div>
+                                        <div data-v-5d902fe9="" class="drop-cascader-pre-item"><p data-v-5d902fe9=""
+                                                                                                  class="pre-item-content">
+                                            影视</p> <i data-v-5d902fe9=""
+                                                      class="pre-item-icon iconfont icon-ic_into"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="ui-v2-normal-line-white-divide"></div>
+
+
+
+                        <div data-v-b3b70444="" data-v-640a3622="" class="content-title-v2-container">
+                            <div data-v-704ae438="" data-v-b3b70444="" class="section-title-v2-container">
+                                <p data-v-704ae438="" class="section-title-v2-deg">*</p>
+                                <h3 data-v-704ae438="" class="section-title-v2-content-main">标题</h3>
+                            </div>
+                            <div data-v-b3b70444="" class="content-title-v2-input-wrp">
+                                <div data-v-4550f808="" data-v-b3b70444="" class="input-box-v2-1-container">
+                                    <div data-v-4550f808="" class="input-box-v2-1-instance">
+                                        <input data-v-4550f808="" type="text" maxlength="80" placeholder="请输入稿件标题" class="input-box-v2-1-val">
+                                    </div>
+                                    <p data-v-4550f808="" class="input-box-v2-1-max-tip">1/80</p></div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="ui-v2-normal-line-white-divide"></div>
+                        <div id="content-tag-v2-container" class="content-tag-v2-container">
+                            <div class="section-title-v2-container"><p class="section-title-v2-deg">*</p>
+                                <h3 class="section-title-v2-content-main">标签</h3>
+                                <p class="section-title-v2-content-sub">（使用活动标签即可参与活动，默认以前三个标签同步生成动态话题）</p></div>
+                            <div class="content-tag-v2-input-wrp">
+                                <div class="input-box-v2-1-container">
+                                    <div class="content-tag-v2-pre-wrp"></div>
+                                    <div class="input-box-v2-1-instance"><input type="text" maxlength="20"
+                                                                                placeholder="按回车键Enter创建标签"
+                                                                                class="input-box-v2-1-val">
+                                    </div>
+                                    <p class="content-tag-v2-last-wrp">还可以添加10个标签</p>
+                                </div>
+                            </div>
+                            <div class="content-tag-v2-other-wrp"><p class="content-tag-v2-other-label">
+                                推荐标签：</p>
+                                <div class="content-tag-v2-other-tag-wrp">
+                                    <div class="label-item-v2-2-container"><p><span>音乐</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>MV</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>OP</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>剪辑</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>动漫</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>童年</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>原创</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>自制</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>搞笑</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>舞蹈</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>完整版</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>日常</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>动漫歌曲</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>ED</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>BGM</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>国产</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>动漫音乐</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>学习</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>经典</span></p></div>
+                                    <div class="label-item-v2-2-container"><p><span>美女</span></p></div>
+                                </div>
+                            </div>
+                            <div class="content-tag-v2-other-wrp"><p class="content-tag-v2-other-label">参与活动：</p>
+                                <p class="content-tag-v2-other-tag-error-wrp">活动标签可在 <span
+                                        style="font-weight: 700;">选择分区</span> 后查看</p>
+                            </div>
+                        </div>
+                        <div class="ui-v2-normal-line-white-divide"></div>
+                        <div class="content-desc-v2-container">
+                            <div class="section-title-v2-container">
+                                <h3 class="section-title-v2-content-main">简介</h3>
+                            </div>
+                            <div class="content-desc-v2-text-wrp">
+                                <div class="text-area-box-v2-container">
+                                    <textarea maxlength="250" class="text-area-box-v2-val placeholder-style"></textarea>
+                                    <p class="text-area-box-v2-max-tip">0/250</p></div>
+                            </div>
+                        </div>
+                        <div class="dividing-line"></div>
+                    </div>
+
+                    <div class="more-selector-v2-container">
+                        <div id="more-selector-v2" class="more-selector-v2-title-wrp">
+                            <h1>更多选项</h1>
+                            <i class="more-selector-v2-drop iconfont icon-ic_collapse"
+                               style="transform: rotate(180deg) translateZ(0px);"></i>
+                            <p class="more-selector-v2-drop-tip">（自制声明、商业声明、字幕设置、水印和充电开关）</p></div>
+                        <div class="dividing-line"></div>
+                    </div>
+
+                    <div class="fans-dynamic-v2-container">
+                        <div class="fans-dynamic-v2-title-wrp"><h1 data-v-17462c34="">粉丝动态</h1></div>
+                        <div class="fans-dynamic-v2-input-wrp">
+                            <div class="text-area-box-v2-container"><textarea maxlength="233"
+                                                                              class="text-area-box-v2-val placeholder-style"></textarea>
+                                <p class="text-area-box-v2-max-tip">0/233</p></div>
+                        </div>
+                    </div>
+
+                    <div class="d-time-v2-container">
+                        <div class="d-time-v2-switch-wrp"><p class="d-time-v2-pre">定时发布</p>
+                            <div class="check-radio-v2-2-container"><span
+                                    data-v-52a41366="" class="check-radio-v2-2-roll"></span></div>
+                            <p class="d-time-v2-last">（<span>当前+4小时 ≤ 可选时间 ≤ 当前+15天</span>，转载稿件撞车判定以过审发布时间为准）
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="submit-button-group-v2-container">
+                        <span class="submit-btn-group-add">立即投稿</span> <span class="submit-btn-group-tpl">保存模版</span>
+                    </div>
+
+                </div>
+
+
+                <div class="auto-complete-container-v2" style="display: none;">
+
+                    <div class="auto-complete-body"><img
+                            src="//s2.hdslb.com/bfs/static/studio-upload-v3/static/img/wait-upload.928ac8e.png"
+                            alt="wait-upload">
+                        <p>等待视频上传完后会自动提交&nbsp;<a data-v-51ea6eb8="">取消自动提交&nbsp;</a></p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

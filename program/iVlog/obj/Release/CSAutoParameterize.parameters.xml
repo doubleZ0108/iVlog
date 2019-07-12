@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="OracleDbContext-Web.config Connection String" description="OracleDbContext 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="User Id=oracle_user;Password=oracle_user_password;Data Source=oracle" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\16214\\Desktop\\iVlog\\iVlog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='OracleDbContext']/@connectionString" />
+  </parameter>
+  <parameter name="Entities-Web.config Connection String" description="Entities 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=ORCL;PASSWORD=DBZdbz108;PERSIST SECURITY INFO=True;USER ID=SYSTEM&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\16214\\Desktop\\iVlog\\iVlog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Entities']/@connectionString" />
+  </parameter>
+  <parameter name="Entities1-Web.config Connection String" description="Entities1 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=ORCL;PASSWORD=DBZdbz108;PERSIST SECURITY INFO=True;USER ID=SYSTEM&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\16214\\Desktop\\iVlog\\iVlog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Entities1']/@connectionString" />
+  </parameter>
+  <parameter name="Entities2-Web.config Connection String" description="Entities2 由应用程序在 web.config 中用来访问数据库的连接字符串。" defaultValue="metadata=res://*/Models.Model.csdl|res://*/Models.Model.ssdl|res://*/Models.Model.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=&quot;DATA SOURCE=IVLOG;PASSWORD=19990418;USER ID=SYSTEM&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\16214\\Desktop\\iVlog\\iVlog\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='Entities2']/@connectionString" />
+  </parameter>
+</parameters>

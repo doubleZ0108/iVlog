@@ -1,0 +1,559 @@
+
+
+#slider-container{
+    width: 100%;
+    height: 1000px;
+    background: darkgoldenrod;
+    font-size: 100px;
+}
+.show{
+    width:18%;
+    height: auto;
+    background: #fffafa;
+    float: right;
+    position: fixed;
+    bottom: 5%;
+    top: 5%;
+    right: -22%;
+    border: 1px solid pink;
+    border-radius: 15px;
+}
+
+.slide{
+    background: red;
+}
+
+.left{
+    position: fixed;
+    right: 1%;
+    top: 0;
+    opacity: 0.4;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+#ranking_digital{
+    padding:10px auto;
+    width: 100%;
+}
+div {
+    display: block;
+}
+
+.bili-tab .bili-tab-item.on:before {
+    display: block;
+}
+
+.bili-tab .bili-tab-item:before {
+    content: "";
+    display: none;
+    position: absolute;
+    left: 50%;
+    margin-left: -3px;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-bottom: 3px solid #00a1d6;
+    border-top: 0;
+    border-left: 3px dashed transparent;
+    border-right: 3px dashed transparent;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+.clearfix:after, .clearfix:before {
+    content: "";
+    display: table;
+}
+
+.rank-list .rank-item.show-detail .ri-detail .ri-title {
+
+    height: 36px;
+    line-height: 18px;
+    width: 150px;
+    padding: 0;
+}
+
+.rank-list .rank-item .ri-detail {
+    margin-left: 15px;
+    margin-top: 6px;
+    float: left;
+}
+
+body, button, input, select, textarea {
+    font: 12px Helvetica Neue,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,Heiti SC,WenQuanYi Micro Hei,sans-serif;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.go-to-head:hover{
+    cursor: pointer;
+}
+
+.zone-module .zone-rank {
+    float: right;
+    width: 260px;
+    min-height: 360px;
+}
+
+.sec-rank {
+    overflow: hidden;
+}
+
+.sec-rank .rank-head {
+    height: 24px;
+    line-height: 30px;
+    margin-left: 5px;
+    margin-right: 15px;
+    padding-left: 40px;
+    margin-top: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(181, 181, 181, 0.43);
+}
+
+article, aside, blockquote, body, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: block;
+}
+
+.sec-rank .rank-head h3 {
+    margin-top: -5px;
+    float: left;
+    color: pink;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.sec-rank .rank-head .rank-tab {
+    margin-left: 40px;
+    float: left;
+}
+
+.bili-tab {
+    overflow: hidden;
+    margin-left: -10px;
+    zoom: 1;
+}
+
+.bili-tab .bili-tab-item:first-child {
+    margin-left: 0;
+}
+
+.bili-tab .bili-tab-item.on {
+    background-color: transparent;
+    border-color: #00a1d6;
+    color: #00a1d6;
+}
+
+.bili-tab .bili-tab-item {
+    float: left;
+    font-size: 15px;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid transparent;
+    margin-left: 30px;
+    transition: .2s;
+    transition-property: border,color;
+}
+
+.sec-rank .rank-list-wrap {
+    width: 200%;
+    overflow: hidden;
+    zoom: 1;
+    transition: all .2s linear;
+    z-index:1000;
+}
+
+.sec-rank .rank-list-wrap .rank-list {
+    padding-bottom: 15px;
+    min-height: 278px;
+    width: 50%;
+    float: left;
+    padding-top: 5px;
+    position: relative;
+    z-index:1000;
+}
+
+
+.rank-list .rank-item.first {
+    margin-top: 15px;
+}
+
+.rank-list .rank-item.last {
+    border: none;
+}
+
+.rank-list .rank-item:hover{
+    /*border: 1px outset rgba(181, 181, 181, 0.43);*/
+    background: rgba(255, 182, 193, 0.14);
+}
+.rank-list .rank-item {
+    position: relative;
+    padding-left: 15px;
+    /*
+    margin-top: 18px;
+    margin-left: 20px;
+    margin-right: 20px;
+     */
+    overflow: hidden;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding-bottom: 18px;
+    /*border-bottom: 1px solid #e5e9ef;*/
+    border-bottom: 1px solid rgba(181, 181, 181, 0.43);
+}
+
+.rank-list .rank-item.highlight .ri-num {
+    background: #f25d8e;
+}
+
+.rank-list .rank-item .ri-num {
+    position: absolute;
+    color: #fff;
+    height: 25px;
+    line-height: 25px;
+    top: 10px;
+    left: 10px;
+    font-size: 15px;
+    min-width: 20px;
+    text-align: center;
+    background-color: #b8c0cc;
+    border-radius: 4px;
+    padding: 0 3px;
+    font-weight: bolder;
+    font-style: normal;
+    margin-top:5px;
+}
+
+.rank-list .rank-item .ri-info-wrap {
+    margin-left:20px;
+    padding-top: 15px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+}
+
+.rank-list .rank-item.show-detail .ri-preview {
+    display: block;
+}
+
+.rank-list .rank-item .ri-preview {
+    margin-right: 5px;
+    width: 85px;
+    height: 60px;
+    float: left;
+    display: none;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left: 20px;
+    margin-top: 0px;
+}
+
+.lazy-img {
+    background: url(//s1.hdslb.com/bfs/static/jinkela/home/asserts/img_loading.png) 50% no-repeat;
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.lazy-img img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.rank-list .rank-item.show-detail .ri-detail .ri-title {
+    height: 36px;
+    line-height: 18px;
+    margin-top: -3px;
+    width: 150px;
+    padding: 0;
+}
+
+.rank-list .rank-item .ri-detail .ri-title {
+    line-height: 18px;
+    height: 18px;
+    overflow: hidden;
+    color: #222;
+}
+
+.rank-list .rank-item .ri-detail .ri-point {
+    line-height: 12px;
+    color: #99a2aa;
+    height: 12px;
+    margin-top: 5px;
+    display: none;
+    overflow: hidden;
+}
+
+.rank-list .rank-item.show-detail .ri-point {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.elevator-module {
+    margin-left: 500px;
+}
+
+.elevator-module {
+    position: fixed;
+    z-index: 10000000;
+    left: 50%;
+    bottom: 10px;
+    margin-left: 42%;
+    transition: top .3s;
+}
+
+.elevator-module .nav-bg {
+    opacity: 0;
+    top: -15px;
+    right: 0;
+    height: 100%;
+    padding-bottom: 20px;
+    width: 60px;
+    position: absolute;
+    background: hsla(0,0%,100%,.8);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all .3s cubic-bezier(.68,-.55,.27,1.55);
+}
+
+.elevator-module .nav-bg .tips-img {
+    position: absolute;
+    width: 117px;
+    height: 333px;
+    background: url(//s1.hdslb.com/bfs/static/jinkela/home/asserts/tab2233.png);
+    left: 12px;
+    top: 14px;
+}
+
+.elevator-module .nav-list {
+    position: relative;
+    background-color: #f6f9fa;
+    border: 1px solid #e5e9ef;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.elevator-module .nav-list .item {
+    width: 48px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    transition: background-color .3s,color .3s;
+    cursor: pointer;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 8px;
+}
+
+
+.elevator-module .nav-list .item.move {
+    background-color: #00a1d6;
+    color: #fff;
+    position: absolute;
+    visibility: visible;
+    cursor: pointer;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
+.elevator-module .nav-list .item.sorting{
+    background-color: #fff;
+    color: #fff;
+}
+
+.elevator-module .nav-list .item.sorting:hover{
+    background-color: #fff;
+    color: #fff;
+}
+
+
+.elevator-module .nav-list .item.sort-disabled:hover{
+    background-color: #a4a5a6;
+    color: #fff;
+}
+.elevator-module .nav-list .item.sort-disabled{
+    background-color: #a4a5a6;
+    color: #fff;
+}
+
+
+
+
+.elevator-module .nav-list .item.on, .elevator-module .nav-list .item:hover {
+    background-color: #00a1d6;
+    color: #fff;
+}
+
+.elevator-module .nav-list .customize {
+    height: 38px;
+    line-height: 20px;
+    padding: 8px 0;
+    border-top: 1px solid #e5e9ef;
+}
+
+.elevator-module .nav-list .customize .icon {
+    display: block;
+    margin: 0 auto 4px;
+    background-position: -663px -151px;
+    height: 18px;
+    width: 18px;
+}
+
+
+.elevator-module .s-line {
+    position: relative;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    height: 9px;
+    width: 30px;
+    margin: 0 auto;
+}
+
+.elevator-module .back-top {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    height: 48px;
+    background-position: -648px -72px;
+    background-color: #f6f9fa;
+    border: 1px solid #e5e9ef;
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+
+.elevator-module .back-top:hover {
+    background-position: -713px -72px;
+    background-color: #00a1d6;
+}
+
+.back-top.up{
+    -moz-transform: rotate(-180deg);
+    -o-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+}
+
+#back-top-disabled:hover{
+    background-position: -713px -72px;
+    background-color: #a4a5a6;
+}
+#back-top-disabled{
+    background-position: -713px -72px;
+    background-color: #a4a5a6;
+}
+
+
+
+.elevator-module .app-download {
+    position: relative;
+    width: 50px;
+    height: 70px;
+}
+
+a, a:hover, ins {
+    text-decoration: none;
+}
+
+a {
+    transition: color .2s;
+}
+
+.elevator-module .app-download .app-icon {
+    position: absolute;
+    left: -15px;
+    width: 80px;
+    height: 80px;
+    background-image: url(//s1.hdslb.com/bfs/static/jinkela/home/asserts/app-download.png);
+}
+
+.elevator-module .app-download .app-tips-icon {
+    display: none;
+    position: absolute;
+    left: -110px;
+    top: -20px;
+    width: 106px;
+    height: 44px;
+    background-image: url(//s1.hdslb.com/bfs/static/jinkela/home/asserts/app-download-tips.png);
+}
+
+.bili-icon, .icon {
+    display: inline-block;
+    background-image: url(//static.hdslb.com/images/base/icons.png);
+}
+
+.elevator-module .nav-bg.open {
+    right: -20px;
+    width: 200px;
+    opacity: 1;
+}
+
+
+.elevator-mask {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    z-index: 10000;
+    top: 0;
+    left: 0;
+}
+
+.elevator-module .nav-bg.open {
+    right: -20px;
+    width: 200px;
+    opacity: 1;
+}
+
+.elevator-module .nav-bg .tips-img {
+    position: absolute;
+    width: 117px;
+    height: 333px;
+    background: url(//s1.hdslb.com/bfs/static/jinkela/home/asserts/tab2233.png);
+    left: 12px;
+    top: 14px;
+}

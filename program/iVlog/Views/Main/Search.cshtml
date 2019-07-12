@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_iVlogMainLayout.cshtml";
+}
+
+
+    <meta charset="UTF-8">
+    <link href="../../css/search/search.css" type="text/css" rel="stylesheet" />
+    <script src="../../js/search/search.js"></script>
+    <script src="../../js/search/jquery.js"></script>
+    <script src="../../js/search/json.js"></script>
+    <script src="../../js/cookie/cookie.js"></script>
+    <script src="../../js/cookie/model.js"></script>
+    <title>iVlog - 搜索</title>
+    <body style="background-image:url(../../img/search/white-bg-1.png);background-repeat:no-repeat;background-size:cover;">
+
+        <div class="contain" style="background-color:rgba(255,255,255,.7);">
+            <div class="head-contain" >
+                <div class="search-wrap">
+                    <div class="logo-input clearfix">
+                        <a href="homePage" class="search-logo"></a>
+                        <div class="search-block">
+                            <div class="input-wrap">
+                                <input id="search-keyword" type="text" maxlength="100" autocomplete="off">
+
+                                <div class="suggest-wrap" style="display: none;">
+                                    <div class="hotword-wrap" style="">
+                                        <ul class="horizontal"></ul>
+                                    </div>
+                                    <ul class="keyword-wrap" style="display: none;"></ul>
+                                    <ul class="history-wrap" style="">
+                                        <li class="title">
+                                            <span>搜索历史</span>
+                                        </li>
+                                        <li class="history-li">
+                                        <li class="vt-text history">无历史记录</li>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+
+
+                            </div>
+                            <div class="search-button">
+                                <i class="icon-search-white"></i>
+                                <span class="search-text">搜索</span>
+                            </div>
+                            <div class="search-loupe"><i class="icon-loupe"></i></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="navigator">
+                    <div class="v-switcher">
+                        <div class="v-switcher-header-wrap">
+                            <div class="v-switcher-header-before"></div>
+                            <div class="v-switcher-tab-wrap">
+                                <ul class="v-switcher-header v-switcher-header-around">
+                                    <li class="v-switcher-header-item" style="width:50%;">
+                                        <a class="one is-active">视频<span class="num"></span></a>
+                                    </li>
+                                    <li class="v-switcher-header-item" style="width:50%;">
+                                        <a class="two">用户<span class="num"></span></a>
+                                    </li>
+                                    <li class="v-switcher-header-anchor" style="width: 200px; transform: translateX(80px); transition-duration: 200ms;">
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="body-contain">
+                <div class="all-contain">
+                    <!---->
+                    <div class="filter-wrap" style="">
+                        <ul class="filter-type clearfix order" style="">
+                            <li class="filter-item active" id="default-sort">
+                                <a href="javascript:;">默认排序</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">最多播放</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">最新发布</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">最多点赞</a>
+                            </li>
+                        </ul>
+                        <!-- 时长filter，可能会删除 -->
+                        <ul class="filter-type clearfix duration">
+                            <li class="filter-item active" id="all-time">
+                                <a href="javascript:;">全部时间</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">一日内</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">一周内</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">一月内</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">一年内</a>
+                            </li>
+                        </ul>
+                        <!-- 分区filter，待定 -->
+                        <ul class="filter-type clearfix tids_1" style="">
+                            <li class="filter-item active">
+                                <a href="javascript:;">全部分区</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">中医</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">古琴</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">数据库</a>
+                            </li>
+                            <li class="filter-item">
+                                <a href="javascript:;">其它</a>
+                            </li>
+                            <!---->
+                        </ul>
+                        <a class="fold up" style="">
+                            收起<i class="arrow-up"></i>
+                        </a>
+                        <a class="fold down" style="display:none;">
+                            更多筛选<i class="arrow-down"></i>
+                        </a>
+                        <div class="switch-wrap">
+                            <div class="aver type active">
+                                <i class="icon-aver"></i>
+                            </div>
+                            <div class="imgleft type">
+                                <i class="icon-imgleft"></i>
+                            </div>
+                        </div>
+                        <!---->
+                    </div>
+                    <div class="user-wrap" style="display: none;">
+                        <div class="dropdown-wrap clearfix">
+                            <div class="total-wrap">
+                                <p class="total-text">找到1个用户</p>
+                            </div>
+                            <div class="select-wrap">
+                                <div class="bili-dropdown dropdown">
+                                    <span class="selected">默认排序</span>
+                                    <i class="icon icon-arrow-down"></i>
+                                    <ul class="dropdown-list">
+                                        <li class="dropdown-item" style="display: none;">默认排序</li>
+                                        <li class="dropdown-item">粉丝数由高到低</li>
+                                        <li class="dropdown-item">粉丝数由低到高</li>
+                                        <li class="dropdown-item">稿件数由高到低</li>
+                                        <li class="dropdown-item">稿件数由低到高</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="result-wrap clearfix">
+                        <ul class="user-list" style="display: none;"></ul>
+                        <ul class="video-contain clearfix" style=""></ul>
+                        <div class="page-wrap">
+                            <div class="pager">
+                                <ul class="pages"></ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>

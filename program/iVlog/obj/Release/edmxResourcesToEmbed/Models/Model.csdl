@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ADMINISTRATOR">
+    <Key>
+      <PropertyRef Name="ADMINISTRATOR_ID" />
+    </Key>
+    <Property Name="ADMINISTRATOR_ID" Type="String" MaxLength="4" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STATE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NICK_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AVATAR" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="GENDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="FANS_NUM" Type="Int16" />
+    <Property Name="FOLLOW_NUM" Type="Int16" />
+    <Property Name="LOCATION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" />
+    <Property Name="SIGNATURE" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="TEL" Type="Int64" />
+    <Property Name="WECHAT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="QQ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="COMMENTS">
+    <Key>
+      <PropertyRef Name="COMMENT_ID" />
+    </Key>
+    <Property Name="COMMENT_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="COMMENT_CONTENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="LIKES_NUM" Type="Int32" />
+    <NavigationProperty Name="SEND_COMMENT" Relationship="Self.SYS_C0010352" FromRole="COMMENTS" ToRole="SEND_COMMENT" />
+    <NavigationProperty Name="HAS_COMMENT" Relationship="Self.SYS_C0010355" FromRole="COMMENTS" ToRole="HAS_COMMENT" />
+  </EntityType>
+  <EntityType Name="FAVORITE">
+    <Key>
+      <PropertyRef Name="FAVORITE_ID" />
+    </Key>
+    <Property Name="FAVORITE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FAVORITE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO_NUM" Type="Byte" />
+    <NavigationProperty Name="HAS_FAVORITES" Relationship="Self.SYS_C0010343" FromRole="FAVORITE" ToRole="HAS_FAVORITES" />
+    <NavigationProperty Name="HAS_VIDEO" Relationship="Self.SYS_C0010346" FromRole="FAVORITE" ToRole="HAS_VIDEO" />
+  </EntityType>
+  <EntityType Name="GET_MESSAGE">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="MESSAGE_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MESSAGE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="READ_STATE" Type="Boolean" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010379" FromRole="GET_MESSAGE" ToRole="USERS" />
+    <NavigationProperty Name="MESSAGE_LIBRARY" Relationship="Self.SYS_C0010380" FromRole="GET_MESSAGE" ToRole="MESSAGE_LIBRARY" />
+  </EntityType>
+  <EntityType Name="HAS_COMMENT">
+    <Key>
+      <PropertyRef Name="COMMENT_ID" />
+    </Key>
+    <Property Name="COMMENT_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT_TIME" Type="DateTime" Precision="6" />
+    <NavigationProperty Name="COMMENTS" Relationship="Self.SYS_C0010355" FromRole="HAS_COMMENT" ToRole="COMMENTS" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.SYS_C0010356" FromRole="HAS_COMMENT" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="HAS_FAVORITES">
+    <Key>
+      <PropertyRef Name="FAVORITE_ID" />
+    </Key>
+    <Property Name="FAVORITE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FAVORITE" Relationship="Self.SYS_C0010343" FromRole="HAS_FAVORITES" ToRole="FAVORITE" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010344" FromRole="HAS_FAVORITES" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="HAS_VIDEO">
+    <Key>
+      <PropertyRef Name="FAVORITE_ID" />
+      <PropertyRef Name="VIDEO_ID" />
+    </Key>
+    <Property Name="FAVORITE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ADD_TIME" Type="DateTime" Precision="6" />
+    <NavigationProperty Name="FAVORITE" Relationship="Self.SYS_C0010346" FromRole="HAS_VIDEO" ToRole="FAVORITE" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.SYS_C0010347" FromRole="HAS_VIDEO" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="HAS_ZONE">
+    <Key>
+      <PropertyRef Name="VIDEO_ID" />
+    </Key>
+    <Property Name="ZONE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ZONE" Relationship="Self.SYS_C0010349" FromRole="HAS_ZONE" ToRole="ZONE" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.SYS_C0010350" FromRole="HAS_ZONE" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="MESSAGE_LIBRARY">
+    <Key>
+      <PropertyRef Name="MESSAGE_ID" />
+    </Key>
+    <Property Name="MESSAGE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MESSAGE_TYPE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="CONTENT" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="TIME" Type="DateTime" Precision="6" />
+    <NavigationProperty Name="GET_MESSAGE" Relationship="Self.SYS_C0010380" FromRole="MESSAGE_LIBRARY" ToRole="GET_MESSAGE" />
+    <NavigationProperty Name="SEND_MESSAGE" Relationship="Self.SYS_C0010377" FromRole="MESSAGE_LIBRARY" ToRole="SEND_MESSAGE" />
+  </EntityType>
+  <EntityType Name="RANKING">
+    <Key>
+      <PropertyRef Name="REFRESH_TIME" />
+    </Key>
+    <Property Name="REFRESH_TIME" Type="DateTime" Precision="6" Nullable="false" />
+    <NavigationProperty Name="SORT_VIDEO" Relationship="Self.SYS_C0010364" FromRole="RANKING" ToRole="SORT_VIDEO" />
+  </EntityType>
+  <EntityType Name="SEND_COMMENT">
+    <Key>
+      <PropertyRef Name="COMMENT_ID" />
+    </Key>
+    <Property Name="COMMENT_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="COMMENTS" Relationship="Self.SYS_C0010352" FromRole="SEND_COMMENT" ToRole="COMMENTS" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010353" FromRole="SEND_COMMENT" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="SEND_MESSAGE">
+    <Key>
+      <PropertyRef Name="MESSAGE_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="MESSAGE_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MESSAGE_LIBRARY" Relationship="Self.SYS_C0010377" FromRole="SEND_MESSAGE" ToRole="MESSAGE_LIBRARY" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010376" FromRole="SEND_MESSAGE" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="SORT_VIDEO">
+    <Key>
+      <PropertyRef Name="REFRESH_TIME" />
+      <PropertyRef Name="TYPE" />
+      <PropertyRef Name="RANK" />
+    </Key>
+    <Property Name="REFRESH_TIME" Type="DateTime" Precision="6" Nullable="false" />
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE" Type="Boolean" Nullable="false" />
+    <Property Name="RANK" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="RANKING" Relationship="Self.SYS_C0010364" FromRole="SORT_VIDEO" ToRole="RANKING" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.SYS_C0010365" FromRole="SORT_VIDEO" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="TAG">
+    <Key>
+      <PropertyRef Name="TAG_NAME" />
+    </Key>
+    <Property Name="TAG_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="REFER_NUM" Type="Int32" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.HAS_TAG" FromRole="TAG" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="UPLOAD_VIDEO">
+    <Key>
+      <PropertyRef Name="VIDEO_ID" />
+    </Key>
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.SYS_C0010358" FromRole="UPLOAD_VIDEO" ToRole="VIDEOS" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010359" FromRole="UPLOAD_VIDEO" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USER_RELATIONSHIP">
+    <Key>
+      <PropertyRef Name="ACTIVE_USER_ID" />
+      <PropertyRef Name="PASSIVE_USER_ID" />
+    </Key>
+    <Property Name="ACTIVE_USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSIVE_USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RELATIONSHIP_TYPE" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010370" FromRole="USER_RELATIONSHIP" ToRole="USERS" />
+    <NavigationProperty Name="USERS1" Relationship="Self.SYS_C0010371" FromRole="USER_RELATIONSHIP" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="USERS">
+    <Key>
+      <PropertyRef Name="USER_ID" />
+    </Key>
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="STATE" Type="Boolean" />
+    <Property Name="IS_ADMIN" Type="Boolean" />
+    <Property Name="NICK_NAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="AVATAR" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GENDER" Type="Boolean" />
+    <Property Name="FANS_NUM" Type="Int16" />
+    <Property Name="FOLLOW_NUM" Type="Int16" />
+    <Property Name="LOCATION" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" />
+    <Property Name="SIGNATURE" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="TEL" Type="Int64" />
+    <Property Name="WECHAT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="QQ" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="GET_MESSAGE" Relationship="Self.SYS_C0010379" FromRole="USERS" ToRole="GET_MESSAGE" />
+    <NavigationProperty Name="HAS_FAVORITES" Relationship="Self.SYS_C0010344" FromRole="USERS" ToRole="HAS_FAVORITES" />
+    <NavigationProperty Name="SEND_COMMENT" Relationship="Self.SYS_C0010353" FromRole="USERS" ToRole="SEND_COMMENT" />
+    <NavigationProperty Name="SEND_MESSAGE" Relationship="Self.SYS_C0010376" FromRole="USERS" ToRole="SEND_MESSAGE" />
+    <NavigationProperty Name="UPLOAD_VIDEO" Relationship="Self.SYS_C0010359" FromRole="USERS" ToRole="UPLOAD_VIDEO" />
+    <NavigationProperty Name="USER_RELATIONSHIP" Relationship="Self.SYS_C0010370" FromRole="USERS" ToRole="USER_RELATIONSHIP" />
+    <NavigationProperty Name="USER_RELATIONSHIP1" Relationship="Self.SYS_C0010371" FromRole="USERS" ToRole="USER_RELATIONSHIP" />
+    <NavigationProperty Name="VISIT" Relationship="Self.SYS_C0010374" FromRole="USERS" ToRole="VISIT" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.LIKES" FromRole="USERS" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="VIDEOS">
+    <Key>
+      <PropertyRef Name="VIDEO_ID" />
+    </Key>
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PRIVACY" Type="Boolean" />
+    <Property Name="COVER" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PATH" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="LIKES_NUM" Type="Int32" />
+    <Property Name="PLAY_NUM" Type="Int32" />
+    <Property Name="COLLECT_NUM" Type="Int32" />
+    <Property Name="SHARE_NUM" Type="Int32" />
+    <Property Name="UPLOAD_TIME" Type="DateTime" Precision="6" />
+    <Property Name="TITLE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="HAS_COMMENT" Relationship="Self.SYS_C0010356" FromRole="VIDEOS" ToRole="HAS_COMMENT" />
+    <NavigationProperty Name="HAS_VIDEO" Relationship="Self.SYS_C0010347" FromRole="VIDEOS" ToRole="HAS_VIDEO" />
+    <NavigationProperty Name="HAS_ZONE" Relationship="Self.SYS_C0010350" FromRole="VIDEOS" ToRole="HAS_ZONE" />
+    <NavigationProperty Name="SORT_VIDEO" Relationship="Self.SYS_C0010365" FromRole="VIDEOS" ToRole="SORT_VIDEO" />
+    <NavigationProperty Name="UPLOAD_VIDEO" Relationship="Self.SYS_C0010358" FromRole="VIDEOS" ToRole="UPLOAD_VIDEO" />
+    <NavigationProperty Name="VISIT" Relationship="Self.SYS_C0010373" FromRole="VIDEOS" ToRole="VISIT" />
+    <NavigationProperty Name="TAG" Relationship="Self.HAS_TAG" FromRole="VIDEOS" ToRole="TAG" />
+    <NavigationProperty Name="USERS" Relationship="Self.LIKES" FromRole="VIDEOS" ToRole="USERS" />
+  </EntityType>
+  <EntityType Name="VISIT">
+    <Key>
+      <PropertyRef Name="VIDEO_ID" />
+      <PropertyRef Name="USER_ID" />
+      <PropertyRef Name="VISIT_TIME" />
+    </Key>
+    <Property Name="VIDEO_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USER_ID" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VISIT_TIME" Type="DateTime" Precision="6" Nullable="false" />
+    <NavigationProperty Name="USERS" Relationship="Self.SYS_C0010374" FromRole="VISIT" ToRole="USERS" />
+    <NavigationProperty Name="VIDEOS" Relationship="Self.SYS_C0010373" FromRole="VISIT" ToRole="VIDEOS" />
+  </EntityType>
+  <EntityType Name="ZONE">
+    <Key>
+      <PropertyRef Name="ZONE_NAME" />
+    </Key>
+    <Property Name="ZONE_NAME" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VIDEO_NUM" Type="Int32" />
+    <NavigationProperty Name="HAS_ZONE" Relationship="Self.SYS_C0010349" FromRole="ZONE" ToRole="HAS_ZONE" />
+  </EntityType>
+  <Association Name="SYS_C0010352">
+    <End Role="COMMENTS" Type="Self.COMMENTS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SEND_COMMENT" Type="Self.SEND_COMMENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="COMMENTS">
+        <PropertyRef Name="COMMENT_ID" />
+      </Principal>
+      <Dependent Role="SEND_COMMENT">
+        <PropertyRef Name="COMMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010355">
+    <End Role="COMMENTS" Type="Self.COMMENTS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_COMMENT" Type="Self.HAS_COMMENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="COMMENTS">
+        <PropertyRef Name="COMMENT_ID" />
+      </Principal>
+      <Dependent Role="HAS_COMMENT">
+        <PropertyRef Name="COMMENT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010343">
+    <End Role="FAVORITE" Type="Self.FAVORITE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_FAVORITES" Type="Self.HAS_FAVORITES" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="FAVORITE">
+        <PropertyRef Name="FAVORITE_ID" />
+      </Principal>
+      <Dependent Role="HAS_FAVORITES">
+        <PropertyRef Name="FAVORITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010346">
+    <End Role="FAVORITE" Type="Self.FAVORITE" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_VIDEO" Type="Self.HAS_VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FAVORITE">
+        <PropertyRef Name="FAVORITE_ID" />
+      </Principal>
+      <Dependent Role="HAS_VIDEO">
+        <PropertyRef Name="FAVORITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010379">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GET_MESSAGE" Type="Self.GET_MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="GET_MESSAGE">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010380">
+    <End Role="MESSAGE_LIBRARY" Type="Self.MESSAGE_LIBRARY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="GET_MESSAGE" Type="Self.GET_MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MESSAGE_LIBRARY">
+        <PropertyRef Name="MESSAGE_ID" />
+      </Principal>
+      <Dependent Role="GET_MESSAGE">
+        <PropertyRef Name="MESSAGE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010356">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_COMMENT" Type="Self.HAS_COMMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEOS">
+        <PropertyRef Name="VIDEO_ID" />
+      </Principal>
+      <Dependent Role="HAS_COMMENT">
+        <PropertyRef Name="VIDEO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010344">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_FAVORITES" Type="Self.HAS_FAVORITES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="HAS_FAVORITES">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010347">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_VIDEO" Type="Self.HAS_VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEOS">
+        <PropertyRef Name="VIDEO_ID" />
+      </Principal>
+      <Dependent Role="HAS_VIDEO">
+        <PropertyRef Name="VIDEO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010349">
+    <End Role="ZONE" Type="Self.ZONE" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_ZONE" Type="Self.HAS_ZONE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZONE">
+        <PropertyRef Name="ZONE_NAME" />
+      </Principal>
+      <Dependent Role="HAS_ZONE">
+        <PropertyRef Name="ZONE_NAME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010350">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HAS_ZONE" Type="Self.HAS_ZONE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEOS">
+        <PropertyRef Name="VIDEO_ID" />
+      </Principal>
+      <Dependent Role="HAS_ZONE">
+        <PropertyRef Name="VIDEO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010377">
+    <End Role="MESSAGE_LIBRARY" Type="Self.MESSAGE_LIBRARY" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SEND_MESSAGE" Type="Self.SEND_MESSAGE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="MESSAGE_LIBRARY">
+        <PropertyRef Name="MESSAGE_ID" />
+      </Principal>
+      <Dependent Role="SEND_MESSAGE">
+        <PropertyRef Name="MESSAGE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010364">
+    <End Role="RANKING" Type="Self.RANKING" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SORT_VIDEO" Type="Self.SORT_VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RANKING">
+        <PropertyRef Name="REFRESH_TIME" />
+      </Principal>
+      <Dependent Role="SORT_VIDEO">
+        <PropertyRef Name="REFRESH_TIME" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010353">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SEND_COMMENT" Type="Self.SEND_COMMENT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="SEND_COMMENT">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010376">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SEND_MESSAGE" Type="Self.SEND_MESSAGE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="SEND_MESSAGE">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010365">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SORT_VIDEO" Type="Self.SORT_VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEOS">
+        <PropertyRef Name="VIDEO_ID" />
+      </Principal>
+      <Dependent Role="SORT_VIDEO">
+        <PropertyRef Name="VIDEO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010358">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UPLOAD_VIDEO" Type="Self.UPLOAD_VIDEO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEOS">
+        <PropertyRef Name="VIDEO_ID" />
+      </Principal>
+      <Dependent Role="UPLOAD_VIDEO">
+        <PropertyRef Name="VIDEO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010359">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UPLOAD_VIDEO" Type="Self.UPLOAD_VIDEO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="UPLOAD_VIDEO">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010370">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="USER_RELATIONSHIP" Type="Self.USER_RELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="USER_RELATIONSHIP">
+        <PropertyRef Name="ACTIVE_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010371">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="USER_RELATIONSHIP" Type="Self.USER_RELATIONSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="USER_RELATIONSHIP">
+        <PropertyRef Name="PASSIVE_USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010374">
+    <End Role="USERS" Type="Self.USERS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VISIT" Type="Self.VISIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERS">
+        <PropertyRef Name="USER_ID" />
+      </Principal>
+      <Dependent Role="VISIT">
+        <PropertyRef Name="USER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C0010373">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VISIT" Type="Self.VISIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VIDEOS">
+        <PropertyRef Name="VIDEO_ID" />
+      </Principal>
+      <Dependent Role="VISIT">
+        <PropertyRef Name="VIDEO_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HAS_TAG">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="*" />
+    <End Role="TAG" Type="Self.TAG" Multiplicity="*" />
+  </Association>
+  <Association Name="LIKES">
+    <End Role="VIDEOS" Type="Self.VIDEOS" Multiplicity="*" />
+    <End Role="USERS" Type="Self.USERS" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ADMINISTRATOR" EntityType="Self.ADMINISTRATOR" />
+    <EntitySet Name="COMMENTS" EntityType="Self.COMMENTS" />
+    <EntitySet Name="FAVORITE" EntityType="Self.FAVORITE" />
+    <EntitySet Name="GET_MESSAGE" EntityType="Self.GET_MESSAGE" />
+    <EntitySet Name="HAS_COMMENT" EntityType="Self.HAS_COMMENT" />
+    <EntitySet Name="HAS_FAVORITES" EntityType="Self.HAS_FAVORITES" />
+    <EntitySet Name="HAS_VIDEO" EntityType="Self.HAS_VIDEO" />
+    <EntitySet Name="HAS_ZONE" EntityType="Self.HAS_ZONE" />
+    <EntitySet Name="MESSAGE_LIBRARY" EntityType="Self.MESSAGE_LIBRARY" />
+    <EntitySet Name="RANKING" EntityType="Self.RANKING" />
+    <EntitySet Name="SEND_COMMENT" EntityType="Self.SEND_COMMENT" />
+    <EntitySet Name="SEND_MESSAGE" EntityType="Self.SEND_MESSAGE" />
+    <EntitySet Name="SORT_VIDEO" EntityType="Self.SORT_VIDEO" />
+    <EntitySet Name="TAG" EntityType="Self.TAG" />
+    <EntitySet Name="UPLOAD_VIDEO" EntityType="Self.UPLOAD_VIDEO" />
+    <EntitySet Name="USER_RELATIONSHIP" EntityType="Self.USER_RELATIONSHIP" />
+    <EntitySet Name="USERS" EntityType="Self.USERS" />
+    <EntitySet Name="VIDEOS" EntityType="Self.VIDEOS" />
+    <EntitySet Name="VISIT" EntityType="Self.VISIT" />
+    <EntitySet Name="ZONE" EntityType="Self.ZONE" />
+    <AssociationSet Name="SYS_C0010352" Association="Self.SYS_C0010352">
+      <End Role="COMMENTS" EntitySet="COMMENTS" />
+      <End Role="SEND_COMMENT" EntitySet="SEND_COMMENT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010355" Association="Self.SYS_C0010355">
+      <End Role="COMMENTS" EntitySet="COMMENTS" />
+      <End Role="HAS_COMMENT" EntitySet="HAS_COMMENT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010343" Association="Self.SYS_C0010343">
+      <End Role="FAVORITE" EntitySet="FAVORITE" />
+      <End Role="HAS_FAVORITES" EntitySet="HAS_FAVORITES" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010346" Association="Self.SYS_C0010346">
+      <End Role="FAVORITE" EntitySet="FAVORITE" />
+      <End Role="HAS_VIDEO" EntitySet="HAS_VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010379" Association="Self.SYS_C0010379">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="GET_MESSAGE" EntitySet="GET_MESSAGE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010380" Association="Self.SYS_C0010380">
+      <End Role="MESSAGE_LIBRARY" EntitySet="MESSAGE_LIBRARY" />
+      <End Role="GET_MESSAGE" EntitySet="GET_MESSAGE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010356" Association="Self.SYS_C0010356">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="HAS_COMMENT" EntitySet="HAS_COMMENT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010344" Association="Self.SYS_C0010344">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="HAS_FAVORITES" EntitySet="HAS_FAVORITES" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010347" Association="Self.SYS_C0010347">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="HAS_VIDEO" EntitySet="HAS_VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010349" Association="Self.SYS_C0010349">
+      <End Role="ZONE" EntitySet="ZONE" />
+      <End Role="HAS_ZONE" EntitySet="HAS_ZONE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010350" Association="Self.SYS_C0010350">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="HAS_ZONE" EntitySet="HAS_ZONE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010377" Association="Self.SYS_C0010377">
+      <End Role="MESSAGE_LIBRARY" EntitySet="MESSAGE_LIBRARY" />
+      <End Role="SEND_MESSAGE" EntitySet="SEND_MESSAGE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010364" Association="Self.SYS_C0010364">
+      <End Role="RANKING" EntitySet="RANKING" />
+      <End Role="SORT_VIDEO" EntitySet="SORT_VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010353" Association="Self.SYS_C0010353">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="SEND_COMMENT" EntitySet="SEND_COMMENT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010376" Association="Self.SYS_C0010376">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="SEND_MESSAGE" EntitySet="SEND_MESSAGE" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010365" Association="Self.SYS_C0010365">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="SORT_VIDEO" EntitySet="SORT_VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010358" Association="Self.SYS_C0010358">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="UPLOAD_VIDEO" EntitySet="UPLOAD_VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010359" Association="Self.SYS_C0010359">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="UPLOAD_VIDEO" EntitySet="UPLOAD_VIDEO" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010370" Association="Self.SYS_C0010370">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USER_RELATIONSHIP" EntitySet="USER_RELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010371" Association="Self.SYS_C0010371">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="USER_RELATIONSHIP" EntitySet="USER_RELATIONSHIP" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010374" Association="Self.SYS_C0010374">
+      <End Role="USERS" EntitySet="USERS" />
+      <End Role="VISIT" EntitySet="VISIT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C0010373" Association="Self.SYS_C0010373">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="VISIT" EntitySet="VISIT" />
+    </AssociationSet>
+    <AssociationSet Name="HAS_TAG" Association="Self.HAS_TAG">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="TAG" EntitySet="TAG" />
+    </AssociationSet>
+    <AssociationSet Name="LIKES" Association="Self.LIKES">
+      <End Role="VIDEOS" EntitySet="VIDEOS" />
+      <End Role="USERS" EntitySet="USERS" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
